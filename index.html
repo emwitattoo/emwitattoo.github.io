@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMWI TATTOO | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Typography */
+            --font-main: 'Din Cond', 'Oswald', sans-serif;
+            --font-sec: 'Garet', 'Montserrat', sans-serif;
+            
+            /* Color Palette (60-30-10) */
+            --color-bg-main: #F5EFE6;
+            --color-bg-sec: #C9A27E;
+            --color-cta: #B85C38;
+            
+            /* Text Colors */
+            --text-main: #2B211C;
+            --text-sec: #6E5A4B;
+            --text-dark-bg: #F8F4EE;
+        }
+
+        body {
+            background-color: var(--color-bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sec);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .navbar-brand, .nav-link, .btn, .accordion-button {
+            font-family: var(--font-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(245, 239, 230, 0.95);
+            border-bottom: 1px solid var(--color-bg-sec);
+            backdrop-filter: blur(5px);
+        }
+        .navbar-brand, .nav-link { color: var(--text-main) !important; }
+        .nav-link:hover { color: var(--color-cta) !important; }
+
+        /* Buttons */
+        .btn-cta {
+            background-color: var(--color-cta);
+            color: var(--text-dark-bg);
+            border: none;
+            border-radius: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-cta:hover {
+            background-color: var(--color-cta);
+            color: var(--text-dark-bg);
+            opacity: 0.85;
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            border-radius: 0;
+        }
+        .btn-outline-custom:hover {
+            background-color: var(--text-main);
+            color: var(--text-dark-bg);
+        }
+
+        /* Hero Image Layout */
+        .hero-img {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+            filter: sepia(30%) grayscale(80%) contrast(110%);
+            transition: filter 0.3s ease;
+        }
+        .hero-img:hover { filter: grayscale(0%) contrast(100%); }
+
+        /* Typography */
+        h1.hero-title {
+            font-size: clamp(2rem, 8vw, 6rem);
+            line-height: 0.9;
+            color: var(--color-bg-sec);
+            white-space: nowrap;
+        }
+
+        p, ul, input, textarea {
+            font-family: var(--font-sec);
+            color: var(--text-sec);
+        }
+
+        /* Gallery */
+        .gallery-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: sepia(30%) grayscale(80%) contrast(110%);
+            transition: filter 0.3s ease;
+            border-radius: 0;
+        }
+        .gallery-img:hover { filter: grayscale(0%) contrast(100%); }
+
+        /* Accordion */
+        .accordion-item {
+            border: none;
+            border-bottom: 1px solid var(--color-bg-sec);
+            background-color: transparent;
+        }
+        .accordion-button {
+            background-color: transparent !important;
+            color: var(--text-main) !important;
+            box-shadow: none !important;
+            padding-left: 0;
+            font-size: 1.25rem;
+        }
+        .accordion-button::after { filter: brightness(0); }
+        .accordion-body { padding-left: 0; }
+
+        /* Forms */
+        .form-control {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--color-bg-sec);
+            color: var(--text-main);
+            border-radius: 0;
+            padding-left: 0;
+        }
+        .form-control:focus {
+            background-color: transparent;
+            border-color: var(--color-cta);
+            box-shadow: none;
+            color: var(--text-main);
+        }
+        .form-control::placeholder { color: var(--color-bg-sec); }
+        .form-label { color: var(--text-main); font-family: var(--font-main); }
+
+        .bg-secondary-theme {
+            background-color: var(--color-bg-sec);
+            color: var(--text-dark-bg);
+        }
+        .bg-secondary-theme p { color: var(--text-dark-bg); }
+
+        /* Scrollable Terms Box */
+        .terms-box {
+            height: 400px; 
+            overflow-y: auto; 
+            background: rgba(248, 244, 238, 0.4); 
+            border: 1px solid var(--color-bg-sec);
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#">EMWI.TATTOO</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#work" data-i18n="navWork">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#info" data-i18n="navInfo">Info</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="navBook">Book</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#terms" data-i18n="navTerms">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/emwitattoo" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-sm btn-outline-custom" onclick="toggleLanguage()" id="langBtn">PL</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-5 mt-5">
+        <div class="container-fluid px-4">
+            <div class="row g-2 mb-5">
+                <div class="col-12 col-md-4">
+                    <img src="p1.jpg" class="hero-img" alt="Hero Tattoo 1">
+                </div>
+                <div class="col-12 col-md-4 d-none d-md-block">
+                    <img src="p2.jpg" class="hero-img" alt="Hero Tattoo 2">
+                </div>
+                <div class="col-12 col-md-4 d-none d-md-block">
+                    <img src="p3.jpg" class="hero-img" alt="Hero Tattoo 3">
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center pb-5">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <h1 class="hero-title mb-3" data-i18n="heroTitle">Geometric<br>Tattoos<br><span style="color: var(--text-main);">Warsaw</span></h1>
+                    <p class="lead mb-4 mx-auto" style="max-width: 500px;" data-i18n="heroDesc">
+                        Minimalist design & conceptual tattooing.<br>
+                        Specializing in balanced proportions and abstract geometry.
+                    </p>
+                    <a href="#contact" class="btn btn-cta btn-lg px-5 py-3" data-i18n="heroBtn">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-5" style="background-color: #fff;">
+        <div class="container-fluid px-0">
+            <div class="row g-0">
+                <div class="col-md-4"><img src="p4.jpg" class="gallery-img" alt="Tattoo 4"></div>
+                <div class="col-md-4"><img src="p5.jpg" class="gallery-img" alt="Tattoo 5"></div>
+                <div class="col-md-4"><img src="p6.jpg" class="gallery-img" alt="Tattoo 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info" class="py-5">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="display-5 fw-bold mb-5 text-center" style="color: var(--text-main);" data-i18n="infoTitle">IMPORTANT INFO & FAQ</h2>
+            
+            <div class="accordion accordion-flush" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#precare" data-i18n="precareTitle">
+                            // 01 Pre-Session Care
+                        </button>
+                    </h2>
+                    <div id="precare" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="precareBody"></div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#aftercare" data-i18n="aftercareTitle">
+                            // 02 Aftercare
+                        </button>
+                    </h2>
+                    <div id="aftercare" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="aftercareBody"></div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq" data-i18n="faqTitle">
+                            // 03 FAQ
+                        </button>
+                    </h2>
+                    <div id="faq" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="faqBody"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-secondary-theme">
+        <div class="container" style="max-width: 600px;">
+            <h2 class="display-5 fw-bold mb-4 text-center" data-i18n="bookTitle">BOOKING</h2>
+            <p class="mb-5 text-center" style="color: var(--text-dark-bg);" data-i18n="bookSub">Please provide details about placement and size.</p>
+            
+            <form action="https://formsubmit.co/your-email@example.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="mb-4">
+                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formName">Your Name</label>
+                    <input type="text" name="name" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label small" style="color: var(--text-dark-bg);">Email</label>
+                    <input type="email" name="email" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formPlacement">Placement</label>
+                        <input type="text" name="placement" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" data-i18n-ph="phPlacement" placeholder="e.g. Left Forearm">
+                    </div>
+                    <div class="col-6 mb-4">
+                        <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formSize">Approx Size (cm)</label>
+                        <input type="text" name="size" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" data-i18n-ph="phSize" placeholder="e.g. 15x10cm">
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formDesc">Idea Description</label>
+                    <textarea name="message" class="form-control" rows="4" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required></textarea>
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formFile">Reference Photos (Max 5MB)</label>
+                    <input type="file" name="attachment" accept="image/*" multiple class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5); padding: 0.5rem 0;">
+                </div>
+
+                <button type="submit" class="btn btn-cta w-100 py-3" data-i18n="formSubmit">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="terms" class="py-5" style="background-color: var(--color-bg-main);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="display-6 fw-bold mb-4 text-center" style="color: var(--text-main);" data-i18n="termsTitle">TERMS & CONDITIONS</h2>
+            <div class="terms-box">
+                <div data-i18n="termsBody" class="small" style="color: var(--text-sec);"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center bg-secondary-theme border-top" style="border-color: rgba(248, 244, 238, 0.2) !important;">
+        <p class="small mb-0" style="color: rgba(248, 244, 238, 0.7);">&copy; 2024 EMWI TATTOO. WARSAW.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const i18n = {
+            en: {
+                navWork: "Work", navInfo: "Info", navBook: "Book", navTerms: "Terms",
+                heroTitle: "Geometric<br>Tattoos<br><span style='color: var(--text-main);'>Warsaw</span>",
+                heroDesc: "Minimalist design & conceptual tattooing.<br>Specializing in balanced proportions and abstract geometry.",
+                heroBtn: "Book Appointment",
+                infoTitle: "IMPORTANT INFO & FAQ",
+                precareTitle: "// 01 Pre-Session Care",
+                precareBody: `
+                    <ul class="mb-0">
+                        <li>Do not drink alcohol 24 hours before your session.</li>
+                        <li>Eat a heavy meal before arriving.</li>
+                        <li>Wear comfortable, loose clothing that allows access to the area.</li>
+                    </ul>`,
+                aftercareTitle: "// 02 Aftercare",
+                aftercareBody: `
+                    <p class="small">The most important part of caring for a new tattoo is keeping the area clean and moisturized. Listen carefully to your tattoo artist's advice, follow these recommendations, and you will minimize any issues during the healing process.</p>
+                    
+                    <h6 class="fw-bold mt-4">Option 1: Second Skin + Sealing Gel</h6>
+                    <p class="small mb-2">A waterproof, breathable foil (second skin) is placed over the fresh tattoo to protect it from dirt and bacteria. It is normal for plasma, ink, and blood to collect underneath and sometimes leak from the edges. Don't worry - this is a natural part of the healing process and won't affect the quality of your tattoo. In some cases, especially with fine-line tattoos, the foil may remain completely clean.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Removal:</strong> The foil can be removed after 12 to 24 hours. Gently peel it off under warm, running water. You might notice some dead skin coming off with it; your skin will completely regenerate over the next month.</li>
+                        <li><strong>Washing:</strong> After removing the foil, wash the tattoo immediately. Use a hypoallergenic, unscented soap (such as intimate wash or traditional fragrance-free bar soap) to avoid irritation.</li>
+                        <li><strong>Drying & Moisturizing:</strong> Pat the area dry using only clean, disposable paper towels.</li>
+                        <li><strong>Aftercare Products:</strong> Apply the sealing gel to clean, dry skin at least twice a day for the first 10 days. After day 10, switch to the cream included in your aftercare box and use it for another 5 days.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">Option 2: Hygienic Pads + Sealing Gel</h6>
+                    <p class="small mb-2">Keep the hygienic pad applied by your artist on overnight and remove it the following morning. You will likely see an imprint of your tattoo on the pad - this is completely normal.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Washing:</strong> After removing the pad, wash the tattoo immediately. Use a hypoallergenic, unscented soap (such as intimate wash or traditional fragrance-free bar soap) to avoid irritation.</li>
+                        <li><strong>Drying & Moisturizing:</strong> Pat the area dry using only clean, disposable paper towels.</li>
+                        <li><strong>Aftercare Products:</strong> Apply the sealing gel to clean, dry skin at least twice a day for the first 10 days. After day 10, switch to the cream included in your aftercare box and use it for another 5 days.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">Option 3: Second Skin + Cream (No Sealing Gel)</h6>
+                    <p class="small mb-2">A waterproof, breathable foil (second skin) is placed over the fresh tattoo to protect it from dirt and bacteria. It is normal for plasma, ink, and blood to collect underneath and sometimes leak from the edges. Don't worry - this is a natural part of the healing process and won't affect the quality of your tattoo. In some cases, especially with fine-line tattoos, the foil may remain completely clean.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Removal:</strong> The foil can be removed after 24 to 48 hours. Gently peel it off under warm, running water. You might notice some dead skin coming off with it; your skin will completely regenerate over the next month.</li>
+                        <li><strong>Washing:</strong> After removing the foil, wash the tattoo immediately. Use a hypoallergenic, unscented soap (such as intimate wash or traditional fragrance-free bar soap) to avoid irritation.</li>
+                        <li><strong>Drying & Moisturizing:</strong> Pat the area dry using only clean, disposable paper towels.</li>
+                        <li><strong>Aftercare Products:</strong> Apply the tattoo healing cream to clean, dry skin at least twice a day for at least 14 days.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">GENERAL RULES (Apply in all cases):</h6>
+                    <ul class="small mb-4">
+                        <li><strong>On the go:</strong> If you are at work or lack access to running water, you can use disposable, moisturizing, unscented baby wipes to gently clean the area.</li>
+                        <li><strong>Less is more:</strong> Do not overapply the cream. A thin layer is more than enough - the product is highly concentrated.</li>
+                        <li><strong>Peeling:</strong> Full epidermis regeneration takes about 30 days. During this time, your skin will peel and flake. Do not scratch or pick at it - let the dead skin come off naturally during washing.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4 text-danger">IMPORTANT NOTE!</h6>
+                    <ul class="small mb-4">
+                        <li><strong>Redness:</strong> After removing the foil, your skin may be red. This is a common reaction, especially for sensitive skin.</li>
+                        <li><strong>Exercise:</strong> Avoid heavy physical activity and workouts for the first 7 - 10 days.</li>
+                        <li><strong>Bacteria:</strong> Stay away from high-bacteria environments (like the gym) for at least 7 days.</li>
+                        <li><strong>Water:</strong> During the healing process (minimum 21 days), do not soak your tattoo. Avoid long baths, swimming pools, saunas, and any open bodies of water.</li>
+                        <li><strong>Vacations:</strong> Avoid booking a vacation right after getting a tattoo. Sand, natural water, and harsh sunlight will disrupt the healing process.</li>
+                        <li><strong>Hygiene:</strong> Sleep in clean, freshly washed bed sheets after your session.</li>
+                        <li><strong>Sun protection:</strong> Do not apply sunscreen to your fresh tattoo for the first 30 days.</li>
+                    </ul>
+                `,
+                faqTitle: "// 03 FAQ",
+                faqBody: `
+                    <p class="small fw-bold mb-1">What is a "session"?</p>
+                    <p class="small mb-4">A session covers all the time we spend together in the studio—from the first line drawn on the tablet to the last touch of the needle. This includes: designing, fitting the stencil to your body, tattooing, and taking breaks.</p>
+
+                    <p class="small fw-bold mb-1">When are you available?</p>
+                    <p class="small mb-4">Availability depends heavily on the type of tattoo. The wait time for a 1-hour session is entirely different from a 6- or 12-hour project. Describe your idea, and I will send you the available dates.</p>
+
+                    <p class="small fw-bold mb-1">How do I book?</p>
+                    <p class="small mb-4">I work at Lunatyk Studio in Warsaw. My books are always open. Please note that it may take a few days to get a reply (tattooing is my priority; after several long sessions, I don't always have the energy for admin work).<br>
+                    • Fill out the online form (link in my IG bio).<br>
+                    • Or email: emwitattoo@gmail.com.<br>
+                    <strong>Important:</strong> Tell me what you want, the placement, and the approximate size. Attach reference photos of my previous work so I understand the exact vibe you are looking for.</p>
+
+                    <p class="small fw-bold mb-1">Pricing</p>
+                    <p class="small mb-4">The studio minimum is 400 PLN. A half-day session (3h) is 1200 PLN. A full-day session (6h) is 2200 PLN.</p>
+
+                    <p class="small fw-bold mb-1">Do I need to pay a deposit?</p>
+                    <p class="small mb-4">Yes. Your booking is confirmed only after paying a non-refundable deposit (usually 100-400 PLN). If you no-show, cancel, or try to reschedule less than 5 days (120 hours) before the session, the deposit is forfeit. You may reschedule once, provided you give at least 5 days' notice.</p>
+
+                    <p class="small fw-bold mb-1">Payment methods</p>
+                    <p class="small mb-4">Deposits are paid online. For the remaining balance on the day of the session, cash is preferred.</p>
+
+                    <p class="small fw-bold mb-1">Why is it priced this way?</p>
+                    <p class="small mb-4">You might think a quote is high for a smaller size, but you are paying for time and extreme precision, not "colored surface area." Geometry and fine-line work demand significantly more focus and time than large, shaded pieces. A tiny but ultra-precise design can take just as much effort as a massive shaded tattoo.</p>
+
+                    <p class="small fw-bold mb-1">Will you create a custom design for me?</p>
+                    <p class="small mb-4">Yes, but please remember: I do not copy other people's work. We can use other artists' tattoos strictly as inspiration. I only tattoo in my own style (check my Instagram portfolio).</p>
+
+                    <p class="small fw-bold mb-1">When will I see the design?</p>
+                    <p class="small mb-4">We create the design together, live, on the day of your session. This ensures it perfectly matches your anatomy and body flow.</p>
+
+                    <p class="small fw-bold mb-1">I don't know exactly what I want...</p>
+                    <p class="small mb-4">You don't need to be an artist or have a finished concept in your head—that's what I am here for. However, you must know your general direction and your absolute "dealbreakers." Ultimately, you decide what stays on your skin forever. If you need 3 hours to decide on a single line, that's fine, but remember that design time is billed as part of the session cost. If you are highly indecisive and we cannot finish the design, we will have to book another paid session.</p>
+
+                    <p class="small fw-bold mb-1">Do I pay for the drawing time?</p>
+                    <p class="small mb-4">Yes. A tattoo session is a comprehensive service. My job isn't just operating a machine; it's creating a unique piece of art. Good preparation is 50% of the success. Spending adequate time designing in the studio ensures your tattoo looks like professional art, not a random sticker. Paper forgives mistakes (erasers exist); skin does not. Every minute spent refining the design before the needle touches you is an investment in a tattoo you will love for life.</p>
+
+                    <p class="small fw-bold mb-1">Does that mean we can draw "endlessly"?</p>
+                    <p class="small mb-4">No. I always guide the design phase forward efficiently without applying time pressure. I have collaboratively designed hundreds of tattoos. My know-how allows me to guide you without unnecessary delays. I always say: my clients draw the design, just using my hands. I am here for advice and technical support. If you don't like the direction we are taking, speak up! I do not get offended. Ideally, we are both thrilled with the design, but ultimately, it is your skin.</p>
+
+                    <p class="small fw-bold mb-1">How long does designing usually take?</p>
+                    <p class="small mb-4">• Simple stencil transfers (circles, mountains, waves): 45–60 mins.<br>
+                    • Simple armbands (1-2 lines): ~30 mins.<br>
+                    • Freehand long lines (e.g., ear to wrist): 60–90 mins.<br>
+                    • Large compositions: Up to 2 hours.<br>
+                    <em>Note: These are estimates based on your decisiveness and anatomy. 90% of the time, the quoted session length is accurate. If delays occur and we might run over time, I will inform you immediately.</em></p>
+
+                    <p class="small fw-bold mb-1">Do I have to agree to everything immediately?</p>
+                    <p class="small mb-4">Absolutely not. You have time to think, consult with me, or text your friends. I encourage you to listen to your gut instinct—that's when the process flows naturally. However, unhealthy "overthinking" artificially prolongs the session. If you are highly prone to overthinking, it might be better to reconsider getting a tattoo. It wastes your money and my time.</p>
+
+                    <p class="small fw-bold mb-1">What happens if I simply cannot decide?</p>
+                    <p class="small mb-4">You are never obligated to get tattooed. However, the time we spend working on the design is not free. Drawing is my profession, not a hobby. If you decide to leave the studio without getting tattooed, you will be billed for the design time, exactly like hiring a graphic designer or architect.</p>
+
+                    <p class="small fw-bold mb-1">Can I book a consultation?</p>
+                    <p class="small mb-4">Yes! There are 3 options:<br>
+                    <strong>1. Quick Consult (up to 30 mins, no drawing):</strong> Free. Held before standard sessions (usually around 10:00 AM) in the studio or online.<br>
+                    <strong>2. Consultation + Design (1.5 hours):</strong> Costs 500 PLN. If we proceed with the tattoo, 300 PLN goes toward your final tattoo price. <em>(Example: We design the piece, you pay 500 PLN. The tattoo will cost 1200 PLN. On tattoo day, you only owe 900 PLN).</em> If you back out, the 500 PLN covers my consultation time. If you change your mind later and we scrap the design to draw a new one on tattoo day, the 500 PLN is retained for the initial work, as I will be doing the job twice.<br>
+                    <strong>3. Remote Design Before the Session:</strong> I use software that tracks drawing time, and you are billed hourly. More revisions = higher cost. I do not recommend this, but we can do it if you insist.</p>
+
+                    <p class="small fw-bold mb-1">Why are you suggesting we make it bigger?</p>
+                    <p class="small mb-4">To prevent it from turning into a blurry dark blob in five years. "Breathing room" (negative space) allows a tattoo to age elegantly and look delicate long-term.</p>
+
+                    <p class="small fw-bold mb-1">Style & Technique: Why does it take so long?</p>
+                    <p class="small mb-4">I tattoo slowly, with surgical precision. Geometry forgives no mistakes; every line must be flawless.<br>
+                    • If you want a full sleeve done in one session, I am not the artist for you.<br>
+                    • If you prioritize quality, extreme detail, and a design that remains sharp for years, you are in the right place. You are choosing precision over speed.</p>
+
+                    <p class="small fw-bold mb-1">Can I bring a friend/plus-one?</p>
+                    <p class="small mb-4">No. It will just be the two of us at the station to maintain strict focus and sanitary standards.</p>
+
+                    <p class="small fw-bold mb-1">What inks do you use?</p>
+                    <p class="small mb-4">I use Eclipse, InkStar, Dynamic, and Pantera. They are completely safe and compliant with all European (REACH) regulations.</p>
+
+                    <p class="small fw-bold mb-1">Do you tattoo over scars or do cover-ups?</p>
+                    <p class="small mb-4"><strong>Scars:</strong> Fine lines tattooed over scars have a 99% chance of blowing out (blurring). It is best to cover scars with solid black elements. Send me a clear photo and the age of the scar so I can assess the tissue.<br>
+                    <strong>Cover-ups:</strong> Generally, no. My style is too light and open to effectively hide an old tattoo. The only exception is correcting an existing geometric tattoo (I am happy to fix someone else's mistakes if technically possible).</p>
+
+                    <p class="small fw-bold mb-1">Are touch-ups free?</p>
+                    <p class="small mb-4">If ink falls out during the healing process, the first touch-up (within 6 months of the session) is usually free. This does <em>not</em> apply to voluntary changes or adding new elements that were not part of the original design.</p>
+
+                    <p class="small fw-bold mb-1">How should I prepare?</p>
+                    <p class="small mb-4"><strong>Skin:</strong> For 2 weeks prior, drink plenty of water and moisturize the area daily. Dry skin makes tattooing harder, longer, and negatively affects healing.<br>
+                    <strong>Health:</strong> No alcohol or blood thinners 24 hours before. Limit coffee. Eat a heavy breakfast!<br>
+                    <strong>Sickness:</strong> If you are taking antibiotics or feel unwell, tell me immediately.<br>
+                    <strong>Boredom:</strong> Bring headphones! We will spend hours together. While I love chatting, I need to focus heavily on the precision of the lines.</p>
+
+                    <p class="small fw-bold mb-1">What won't you tattoo?</p>
+                    <p class="small mb-4">Palms, soles of feet, or genitals. I do not do patriotic designs, offensive imagery, or copy other artists' work.</p>
+
+                    <p class="small fw-bold mb-1">When should I NOT get tattooed?</p>
+                    <p class="small mb-4">If you are pregnant, breastfeeding, have an active herpes outbreak, have a fresh/peeling tan, or are under the influence of drugs/alcohol. Your health and the tattoo's healing are the priority.</p>
+
+                    <p class="small fw-bold mb-1">What should I wear?</p>
+                    <p class="small mb-4">Comfortable clothes you don't mind getting ink on. Zip-ups or button-downs are great for easily exposing the area being tattooed while keeping the rest of you warm.</p>
+                    
+                    <p class="small fw-bold mt-4 mb-0">Contact us immediately if you have any questions or notice any worrying symptoms:<br>IG: @emwitattoo | Email: emwitattoo@gmail.com</p>
+                `,
+                bookTitle: "BOOKING",
+                bookSub: "Please provide details about placement and size.",
+                formName: "Your Name",
+                formPlacement: "Placement",
+                formSize: "Approx Size (cm)",
+                formDesc: "Idea Description",
+                formSubmit: "Send Request",
+                phPlacement: "e.g. Left Forearm",
+                phSize: "e.g. 15x10cm",
+                termsTitle: "TERMS & CONDITIONS",
+                termsBody: `
+                    <h6 class="fw-bold">REGULATIONS OF EMWI TATTOO STUDIO</h6>
+                    <p class="mb-4">Effective as of: April 29, 2026<br>Updated: June 7, 2026</p>
+                    <p>This document outlines the terms and conditions for booking and conducting tattoo sessions at EMWI TATTOO studio.</p>
+                    <p>In Sections 7, 8, and 9, we have detailed all medical contraindications and potential health risks associated with the procedure. Please read these sections carefully before making a final decision to book an appointment.</p>
+                    
+                    <h6 class="fw-bold mt-4">What exactly will you find in these regulations?</h6>
+                    <p><strong>Bookings and Preparation:</strong> The registration process, guidelines for submitting your design inspirations, and a behind-the-scenes look at the design creation workflow.</p>
+                    <p><strong>Financial Terms:</strong> The requirements for successfully securing a date, deposit payment terms, and the conditions under which the studio retains the deposit (should the session be canceled due to reasons on the client's side).</p>
+                    <p><strong>Complaints and Cancellations:</strong></p>
+                    <p>Complaints – instructions on what to do if you believe the service was performed defectively.</p>
+                    <p>Withdrawal from the contract – rules regarding the so-called "right to change your mind." Please note, however, that this applies only if the tattoo was not custom-designed for you (the right to withdraw is legally excluded for custom, tailor-made designs).</p>
+
+                    <h6 class="fw-bold mt-4">Why is this document structured this way?</h6>
+                    <p>While it may take a few moments to read, our top priorities are your safety, complete transparency in our cooperation, and full compliance with legal regulations. We are sending this to you in advance so you have plenty of time to review it.</p>
+
+                    <h6 class="fw-bold mt-4">Legal Information</h6>
+                    <p>The contract is concluded through contact with the studio based on the terms specified in these regulations. The content of this document does not constitute an offer within the meaning of the Civil Code, but rather an invitation to open discussions and enter into an agreement.</p>
+                    <p>If you have any questions or doubts regarding any part of these regulations, please feel free to contact us—we will gladly clear things up for you.</p>
+
+                    <h6 class="fw-bold mt-4">Below is a brief guide that outlines the key stages of our cooperation in a nutshell:</h6>
+                    <p><strong>Business days</strong> – days from Monday to Friday, excluding public holidays in Poland indicated in the Act on Non-Working Days;</p>
+                    <p><strong>Client</strong> – a natural person, provided they have full legal capacity or limited legal capacity provided they have the consent of a Legal Guardian, who enters into a Contract for the performance of a Service with the Studio, on the conditions described in these Regulations;</p>
+                    <p><strong>Legal Guardian</strong> – a natural person being the legal representative of a minor;</p>
+                    <p><strong>Design fee</strong> – an additional fee for changes in the Tattoo Pattern accepted by the Client;</p>
+                    <p><strong>Pigments</strong> – mixtures used to perform the Tattoo, adjusted to the applicable Regulation (EC) of the European Parliament and of the Council 1907/2006 of 18 December 2006 concerning the Registration, Evaluation, Authorisation and Restriction of Chemicals (REACH), establishing a European Chemicals Agency, amending Directive 1999/45/EC and repealing Council Regulation (EEC) No 793/93 and Commission Regulation (EC) No 1488/94, as well as Council Directive 76/769/EEC and Commission Directives 91/155/EEC, 93/67/EEC, 93/105/EC and 2000/21/EC, containing on the packaging the information: "Mixture for use in tattoos or permanent make-up", batch number, list of all ingredients of the mixture in descending order, information on the presence of any nickel and chromium compounds, designation of pH regulating substances and additional information on safety (these may be on the packaging or in the instructions for use);</p>
+                    <p><strong>Regulations</strong> – contractual terms for the performance of Services provided by the Studio to the Client, described in this document;</p>
+                    <p><strong>Reservation</strong> – a Preliminary reservation of a date, which has been confirmed by the Client through the payment of a deposit on the conditions indicated in the Regulations;</p>
+                    <p><strong>Tattoo session</strong> – the time of the Service, during which the Tattoo Pattern is designed and then it is transferred onto the Client's body by the introduction of Pigment into the Client's dermis by the Tattooer; the time of a full-day tattoo session is determined individually and most often amounts to from five clock hours;</p>
+                    <p><strong>Studio</strong> – Emilia Duszczyk conducting business under the company name EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, address for service: ul. Wspólna Droga 12/26, 04-352 Warsaw;</p>
+                    <p><strong>Tattoo</strong> – the permanent final effect of transferring the Tattoo Pattern during the Tattoo Session onto the Client's body using Pigments;</p>
+                    <p><strong>Service</strong> – this is the service provided by the Studio to the Client consisting of the performance of a Tattoo based on an accepted Tattoo Pattern for a fixed Remuneration, on the principles specified in these Regulations;</p>
+                    <p><strong>Voucher</strong> – a document issued by the Studio, enabling the realization of Services provided in the Studio or enabling payment for a Service provided by the Studio in accordance with the applicable Regulations and the value of the held Voucher;</p>
+                    <p><strong>Preliminary reservation of a date</strong> – the preliminary date for the performance of the Service determined when making an appointment, requiring confirmation through the payment of a deposit to the Studio's bank account in order to become a Reservation;</p>
+                    <p><strong>Flash pattern</strong> – an already designed, ready original proprietary Tattoo design, which the Client can reserve through the Studio's Social Media or directly in the Studio, on the principles described in these Regulations;</p>
+                    <p><strong>Remuneration</strong> – the price that the Client is obliged to pay for the performed Service;</p>
+                    <p><strong>Preliminary tattoo pattern</strong> – a design, a sketch of a Tattoo Pattern created by the Tattooer selected by the Client based on the description or references of the Client provided by the Client in a period up to 7 days before the appointed Tattoo Session, made available for the Client's inspection on the day of the Tattoo Session;</p>
+                    <p><strong>Tattoo pattern</strong> – a Tattoo design created during the Tattoo Session based on the Preliminary tattoo pattern by the Tattooer selected by the Client or from ready, previously prepared Flash patterns.</p>
+
+                    <h6 class="fw-bold mt-4">§1 GENERAL PROVISIONS</h6>
+                    <p>These Regulations specify the framework rules for the provision and use of the Studio's Services and constitute, together with the Privacy Policy, an integral part of the contract concluded by the Client with the Studio, regulating in particular: 1) General provisions; 2) Booking the Service; 3) Deposit; 4) Changing the Service date; 5) Tattoo valuation; 6) Tattoo pattern; 7) Contraindications to the performance of the Tattoo service; 8) Possible side effects and complications after the Tattoo service; 9) Preparation for the Service; 10) Consent for the Service; 11) Refusal to perform the Service; 12) Payments; 13) Vouchers; 14) Right to withdraw from the Contract; 15) Effects of withdrawal from the Contract; 16) Exclusion of the right to withdraw; 17) Complaints; 18) Out-of-court methods of resolving complaints and pursuing claims; 19) Hygiene standards of the Studio; 20) Order regulations; 21) Protection of personal data; 22) Final provisions.</p>
+                    <p>The definitions indicated in the Glossary constitute an integral part of the Regulations, and unless otherwise indicated, they have the meaning defined therein. In such a case, the definition in these Regulations is written with a capital letter.</p>
+                    <p>Services are provided by the Studio to Clients in Warsaw at the address: ul. Broniewskiego 59A, 01-865 Warsaw.</p>
+                    <p>The Client is obliged to familiarize themselves with the provided Regulations before signing up for the Service, and to comply with its rules. Confirmation of the Reservation by paying a deposit constitutes acceptance of the provisions of the Regulations.</p>
+
+                    <h6 class="fw-bold mt-4">§2 BOOKING THE SERVICE</h6>
+                    <p>Preliminary reservation of a Service date is made personally by the Client via e-mail sent to the Studio's address: emwitattoo@gmail.com or other means of communication, in particular messengers on social networking sites (Instagram Direct: @emwitattoo) and the Studio's registration form. After making a Preliminary reservation of a Service date, the Client is obliged to confirm the Reservation of the Service date within three business days, by paying a deposit towards the reserved Service in the amount indicated by the Studio.</p>
+                    <p>The Client is obliged to appear for the scheduled Service punctually. In the event of the Client being late for the scheduled Service, the Studio reserves the right to shorten the duration of the Service, of which the Client will be informed before proceeding to its performance. For a shortened Service, the Client is obliged to pay the full Remuneration.</p>
+                    <p>In the case of the Client being late, the Studio reserves the right to refuse to perform the Service if achieving the effect desired by the Client will not be possible in the shortened time. In this case, the Studio will retain the deposit previously paid by the Client.</p>
+                    <p>If the Studio cancels the scheduled Service, and a deposit was paid, it will be returned to the Client in the same amount; in the case of the Client's consent to postpone the Reserved Service date, the Studio retains the deposit. If the performance of the Service is delayed through the fault of the Studio, the Service will not be shortened.</p>
+
+                    <h6 class="fw-bold mt-4">§3 DEPOSIT</h6>
+                    <p>The Preliminary Service date is specified when making an appointment; in order to reserve the Service date, a deposit in the amount indicated by the Studio should be paid within three business days, for the purpose of confirming the Service, to the Studio's bank account; in the title of the transfer, the Client enters their details according to the template: deposit, Service date, first name, surname. Lack of payment of the deposit within the appointed period means that no effective reservation of the Service date occurs, and the Studio cancels the Preliminary reservation of the Service date.</p>
+                    <p>When the Client signs up for several Preliminary reservations of a Service date, a deposit is collected from each Preliminary reservation of a date, according to the multiple of the rate indicated in § 3 section 1 of the Regulations, i.e., for each preliminary reserved date separately. If the Service is performed, the deposit is credited towards the Remuneration for the performed Service.</p>
+                    <p>The deposit is forfeited when the performance of the Service does not occur due to reasons lying on the side of the Client, and in particular in the case of: 1) the Client's failure to appear for the scheduled Service; 2) cancellation / change of the date of the scheduled Service with the exception of cases indicated in § 4 section 1 of the Regulations; 3) the Client's poor state of health causing the cancellation of the Service not confirmed by a medical certificate; 4) refusal to perform the Service by the Studio due to reasons indicated in the Regulations, in particular indicated in § 7 and 11 of the Regulations; 5) non-acceptance by the Client of the Tattoo pattern prepared by the Tattooer (in this case, the deposit is retained towards the time spent by the Tattooer on designing).</p>
+                    <p>The deposit is returned to the Client in the same amount when the performance of the Service does not occur due to reasons lying on the side of the Tattooer.</p>
+
+                    <h6 class="fw-bold mt-4">§4 CHANGING THE SERVICE DATE</h6>
+                    <p>The Client is entitled to a one-time change of the Reservation date without losing the deposit, if it is made no later than 5 days (120 hours before the start of the session) before the appointed Service date. A change in a shorter period than 5 business days (120 hours before the start of the session) before the Reservation date results in the loss of the deposit.</p>
+                    <p>The Studio has the right to change the Reservation date if it considers that contraindications to the performance of the Service described in § 7 and § 11 of the Regulations occurred in the Client. As well as in the case when the physical condition of the Client or their skin prevents the correct performance of the Service.</p>
+
+                    <h6 class="fw-bold mt-4">§5 TATTOO VALUATION</h6>
+                    <p>Remuneration for the Tattoo session is determined with the Client individually and depends in particular on: 1) the experience of the Tattooer who will create the Tattoo pattern and then perform the Tattoo session; 2) the type of Pattern, its size, level of detail and the chosen tattooing technique; 3) the estimated time needed to perform the Tattoo session. The valuation is made by the Studio or personally by the Tattooer in agreement with the Client. The Remuneration may change in the event of a change in circumstances indicated in § 5 section 1 point 2 and point 3 of the Regulations.</p>
+                    <p>In the event of an interruption of the Tattoo session for reasons lying on the side of the Client, the Tattoo session is settled hourly according to the rate of 400 PLN, with rounding up to the full hour.</p>
+
+                    <h6 class="fw-bold mt-4">§6 TATTOO PATTERN</h6>
+                    <p>The subject matter, style, level of detail and size of the Tattoo pattern is determined with the Client upon the Preliminary reservation of a date. The Client presents their expectations, among others, through providing reference photos and inspirations sent to the e-mail address of the selected Tattooer.</p>
+                    <p>The Tattoo pattern is prepared on the day of the Tattoo session by the Tattooer based on the Preliminary tattoo pattern accepted by the Client, created based on: the description, reference photos and inspirations of the Client provided by the Client in a period up to 7 days before the appointed Tattoo session, or from ready, previously prepared Tattooer Patterns made available on Social Media.</p>
+                    <p>The Tattoo session is performed based on a proprietary Tattoo pattern created by the Tattooer selected by the Client or a Flash pattern. There is a possibility to perform a tattoo based on a design/photo provided by the Client; in such a case, the Studio will take a statement from the Client that they possess the proprietary copyrights to use the design/photo, as well as that the design/photo does not infringe on the personal or proprietary copyrights of third parties, including also the right to the image and personal rights of third parties and is free from any encumbrances or restrictions of a material or obligatory nature and legal and physical defects.</p>
+                    <p>In the case where the design/photo made available by the Client, contrary to the Client's assurance, infringes the rights of third parties, the Client will undertake to return to the Studio all costs, damages, losses, not excluding the costs of legal services, which the Studio will incur for this reason.</p>
+                    <p>The time needed for designing the Tattoo pattern and introducing changes to it is counted towards the time of the Tattoo session. The Tattoo pattern is presented to the Client for acceptance on the day of the Tattoo session. The Tattoo is valued and performed after the acceptance by the Client of the Tattoo pattern in its entirety.</p>
+                    <p>In the case of non-acceptance of the Preliminary tattoo pattern and/or the Tattoo pattern by the Client, despite the correction of the design, the Studio retains the deposit towards the time spent by the Tattooer on designing. In the case of introducing changes to the Tattoo pattern after its acceptance by the Client, the Client is obliged to pay a Design fee in an amount determined by the Tattooer and depending on the nature and scope of the changes. The Design fee is not credited towards the Remuneration for the Tattoo session.</p>
+
+                    <h6 class="fw-bold mt-4">§7 CONTRAINDICATIONS TO THE PERFORMANCE OF THE TATTOO SERVICE</h6>
+                    <p>Services provided by the Studio consisting in performing a Tattoo can be considered invasive, therefore the Studio recommends a consultation with a doctor each time before making a Preliminary reservation of a Service date, particularly in the case of observing relative contraindications in oneself. However, in the case of observing absolute contraindications – not to reserve a date; and in the case of temporary contraindications – to refrain from reserving a date until they subside.</p>
+                    <p>The Studio informs that contraindications to the performance of the Service can be divided into: 1) absolute contraindications – performance of the Service is completely prohibited; 2) relative contraindications – performance of the Service requires an individual assessment and the consent of a doctor; 3) temporary contraindications – the Service may be performed after the obstacle subsides.</p>
+                    <p>A Tattoo cannot be performed if the Client has observed in themselves any absolute contraindication: 1) allergy to dye ingredients – a confirmed allergic reaction to pigments used in the tattoo, the Client can familiarize themselves with the Pigments used and their composition; 2) active skin infections – e.g. impetigo, herpes, fungal infection; 3) autoimmune skin diseases in the active phase – e.g. psoriasis, lupus erythematosus; 4) blood clotting disorders – e.g. hemophilia, use of anticoagulants; 5) skin cancers – suspicion or confirmation of the presence of neoplastic changes in the place of the planned tattoo; 6) pregnancy and breastfeeding – potential risk of reaction to the pigment or infection; 7) severe contact allergies – e.g. to latex or disinfecting agents used during the procedure; 8) unregulated diabetes – increased risk of infection and problems with skin healing; 9) systemic infections – e.g. HIV, Hepatitis B and C, particularly in the absence of medical control; 10) epilepsy – risk of an attack during the procedure.</p>
+                    <p>A Tattoo may be performed after an assessment of the state of health and with the consent of a doctor in the case of the occurrence of any relative contraindication: 1) autoimmune diseases in remission – e.g. psoriasis, if skin changes are not active; 2) skin allergies – may require a test for the presence of an allergy to the Pigment; 3) hormonal disorders – e.g. unregulated thyroid, which may affect the healing process; 4) past viral infections – e.g. herpes (risk of recurrence in the place of the tattoo); 5) immunosuppressive or steroid drugs – weakening of the immune system increases the risk of complications; 6) keloids and tendency to form hypertrophic scars – greater risk of incorrect healing.</p>
+                    <p>A Tattoo cannot be performed until the temporary contraindication subsides: 1) viral and bacterial infections – e.g. cold, flu, angina; 2) fresh burns or skin damage, including sunburn – the place of the tattoo must be completely healed; 3) use of antibiotics – one should wait at least 2 weeks after finishing the treatment; 4) recently performed cosmetic procedures – e.g. laser hair removal, chemical peels (minimum 2–4 weeks break); 5) skin inflammations – e.g. eczema in the place of the planned tattoo; 6) pregnancy or breastfeeding – tattoo possible after the end of breastfeeding and stabilization of the organism.</p>
+                    <p>Preliminary reservation of a date by the Client is equivalent to the Client having familiarized themselves with the above list of contraindications and confirming that none of them occur in their case. The Client also undertakes to inform the Studio about any changes to their state of health that could constitute a contraindication to performing the Tattoo for the purpose of canceling or changing the date of the Service Reservation.</p>
+
+                    <h6 class="fw-bold mt-4">§8 POSSIBLE SIDE EFFECTS AND COMPLICATIONS AFTER THE TATTOO SERVICE</h6>
+                    <p>Despite exercising the highest care and maintaining high sanitary standards during the performance of the Service, the Client should be aware that performing a Tattoo may be associated with the occurrence of side effects and/or complications described below.</p>
+                    <p>Side effects are predicted and usually natural reactions of the body to the Service, they are temporary and most often do not require medical intervention. Possible side effects after a Tattoo are: 1) redness and swelling in the place of performance of the Service, which subside within a few days, 2) light pain or discomfort during healing, 3) scabs and peeling of the epidermis during skin regeneration.</p>
+                    <p>Complications – these are unforeseen and undesirable consequences of performing the Service, which may require medical help. The Client may experience the following complications after performing a Tattoo:</p>
+                    <p><strong>Complications considered common:</strong> a) blood extravasations – slight bleeding from damaged vessels during the procedure; b) swelling in the place of the tattoo – persisting up to 3 days, associated with tissue irritation; c) inflammation – local, sometimes accompanied by a low-grade fever; d) change of pigment color – caused by healing processes, skin reaction or influence of UV rays; e) bacterial infection – most often the result of neglect of hygiene during the healing period, e.g. folliculitis.</p>
+                    <p><strong>Rare complications (occurring in a small number of people):</strong> a) contact allergy to the dye – an allergic reaction to the Pigment ingredients; b) phototoxic reaction – increased sensitivity of the skin to light radiation in the place of the tattoo; c) Pigment migration – displacement of the dye beyond the area of the tattoo due to an immune reaction; d) hypertrophic scars and keloids – in people predisposed to excessive scar formation; e) viral infection – e.g. herpes in the place of the tattoo, if the immune system is weakened; f) Köbner phenomenon – a performed tattoo may trigger symptoms of skin diseases with an immune background, such as psoriasis.</p>
+                    <p><strong>Very rare complications (exceptional situations, requiring special attention):</strong> a) granulomas – nodules in the subcutaneous tissue, being the reaction of the body to Pigment particles as a foreign body; b) intensification or recurrence of chronic diseases – associated with the weakening of the immune system; c) muscle atrophy – possible as a result of deep infections or incorrect care; d) sepsis – as a result of a severe bacterial infection, if treatment is not undertaken in time; e) anaphylactic reactions – to the chemicals used (e.g. pigments, care products); f) skin cancer in the place of the tattoo – (hypothetical, no clear scientific evidence, however a theoretical risk associated with the reaction to pigments). g) thrombophlebitis – inflammation of superficial veins as a result of damage to vessels during the tattoo.</p>
+                    <p>In the case of observing side effects and/or complications in oneself, the Client should immediately inform the Studio and contact a doctor to obtain medical help, to the provision of which the Studio is not entitled.</p>
+
+                    <h6 class="fw-bold mt-4">§9 PREPARATION FOR THE SERVICE</h6>
+                    <p>Out of concern for the safety of Clients, the performance of each Service in the Studio is preceded among others by: conducting qualification for the Service excluding the occurrence of contraindications to the performance of the Service indicated in § 7 of the Regulations by filling out a health questionnaire, taking from the Client consent for the Service and necessary statements, as well as instruction on the rules of post-service care.</p>
+                    <p>The Client undertakes to provide the Studio personnel with answers consistent with the facts.</p>
+                    <p>Before performing the Tattoo, the Client is entitled to familiarize themselves with the information placed on the packaging of the Pigments used to perform the Tattoo.</p>
+                    <p>The Studio does not bear responsibility for post-service complications or undesirable action of the preparations used, if they occur as a consequence of the concealment of information about the state of health by the Client.</p>
+                    <p>The Studio reserves the right to refuse to perform the Service if a member of the Studio personnel conducting the interview finds the existence of contraindications to its performance.</p>
+
+                    <h6 class="fw-bold mt-4">§10 CONSENT FOR THE SERVICE</h6>
+                    <p>Subject to other provisions of these Regulations, a condition for the performance of the Service by the Studio is the expression by the Client of written consent for the Service on a form used by the Studio.</p>
+                    <p>Expression of written consent is required before performing each Service.</p>
+                    <p>Consent for the Service may be expressed by an adult Client, possessing full or limited legal capacity. The Studio does not perform Tattoo Services for minors.</p>
+
+                    <h6 class="fw-bold mt-4">§11 REFUSAL TO PERFORM THE SERVICE</h6>
+                    <p>The Studio reserves the right to refuse to perform the Service in the following cases: 1) when the Client has not expressed consent to perform the Service or the consent was not granted in a correct manner, i.e. in accordance with the applicable legal provisions; 2) if the Client's condition indicates the consumption of alcohol, intoxicants or other means that could, in the opinion of the Studio personnel, influence the occurrence of potential complications in connection with the performed Service or prevent or hinder the performance of the Service; 3) if in the opinion of the Studio personnel the Client does not qualify for the performance of a given Service, including in particular due to the occurrence of contraindications to the performance of the Service indicated in § 7 of the Regulations; 4) if the Client does not express consent to activities, the undertaking of which is necessary for the correct performance of the Service, including in particular refuses to provide information or does not provide necessary information necessary for the correct performance of the Service by the Studio, or does not fill in all the forms used and required in the Studio; 5) the Client has not paid the deposit in accordance with the provisions of these Regulations, due to which no Reservation of the date occurred; 6) the Client does not comply with the rules of maintaining safety indicated in § 19 and § 20 of the Regulations.</p>
+
+                    <h6 class="fw-bold mt-4">§12 PAYMENTS</h6>
+                    <p>The Client has the possibility of payment for Services in the Studio in cash, by bank transfer and Voucher. The deposit should be paid according to the rules indicated in § 3 of the Regulations. Services are valued in accordance with the rules indicated in § 5 of the Regulations.</p>
+
+                    <h6 class="fw-bold mt-4">§13 VOUCHERS</h6>
+                    <p>The Studio conducts the sale of Vouchers for Services of any value.</p>
+                    <p>A Voucher is a document issued by the Studio enabling the realization of selected Services in the Studio or enabling payment for a Service provided by the Studio in accordance with the applicable Regulations and the value of the held Voucher, and found in the current offer of the Studio.</p>
+                    <p>The Voucher is issued in the form of an electronic invitation to the bearer or in physical form.</p>
+                    <p>The Voucher contains: the amount appropriate for use, number and expiry date. The Voucher may also contain a description of the method of its realization.</p>
+                    <p>Any manipulation/changes in the content of the Voucher including deletions, crossings out, supplements, additions result in the Voucher losing its validity.</p>
+                    <p>A Voucher can be purchased in the shop in the studio in physical form or in electronic form by contacting the address emwitattoo@gmail.com.</p>
+                    <p>In the case of purchasing a Voucher at a distance, the Client is provided with a Voucher in electronic form, to the e-mail address indicated by them. In the case of purchasing a Voucher at a distance, the Client is entitled to a 14-day right of withdrawal from a contract concluded at a distance described in § 14 of the Regulations; after the expiry of the period for withdrawal from the contract, the Voucher is not subject to return or exchange for cash. In the case of the Client using the right to withdraw, the Studio deactivates the Voucher provided to the Client.</p>
+                    <p>The Voucher is valid for 6 months counted from the day of its issuance – in this period, the Services should be used based on the purchased Voucher. After the expiry of the validity period, the Voucher loses its validity, and the holder of the Voucher loses the rights resulting from it.</p>
+                    <p>In the case of non-realization of the Voucher by its holder or the desire to use it after the expiry of the Voucher's validity period, the holder is not entitled to any rights by virtue of holding the Voucher, nor can they claim the right to compensation or return of the fee for the Voucher.</p>
+                    <p>In a situation where the value of the Voucher is higher than the value of the Service realized with its use, the resulting surplus is not subject to return.</p>
+                    <p>The Client may pay extra to the Voucher in a situation where the value of the Services they want to use exceeds the value indicated on the Voucher.</p>
+                    <p>The Voucher may be used during one visit / one purchase. After the expiry of the Voucher's validity period, the unused value of the Voucher is forfeited.</p>
+                    <p>Booking the Service takes place on the rules indicated in § 2 and § 3 of the Regulations, whereby the Client should inform that they are using a Voucher and indicate the expiry date of the used Voucher.</p>
+                    <p>Granted rebates, discounts, promotions and the Voucher do not combine.</p>
+                    <p>A condition for using the Voucher is to provide it in the original before the realization of the planned Service at the Studio reception.</p>
+                    <p>In the case of loss or destruction of the Voucher, the Studio does not bear responsibility nor does it compensate the loss caused by the occurred situation.</p>
+                    <p>The Studio does not bear responsibility for not allowing the holder of a Voucher to perform a selected Service, in the case of finding contraindications for the performance of such a Service by the Studio personnel.</p>
+                    <p>A Service booked as part of using a Voucher requires the payment of a deposit on the principles specified in these Regulations; a Service for which the Client does not appear without earlier cancellation of the Reservation in accordance with § 4 section 1 of the Regulations is forfeited, and the Studio retains the deposit on the principles indicated in these Regulations.</p>
+                    <p>19. These Regulations constitute an integral part of the purchase of a Voucher.</p>
+
+                    <h6 class="fw-bold mt-4">§14 RIGHT TO WITHDRAW FROM THE CONTRACT</h6>
+                    <p>The Client has the right to withdraw from a contract concluded outside the Studio within 14 days without giving any reason. To exercise the right to withdraw from the contract, the Client must inform the Studio of their decision to withdraw from the Contract by way of an unequivocal statement made electronically to the e-mail address: emwitattoo@gmail.com or in writing to the Studio's address. A model withdrawal form constitutes an annex to the Regulations. However, the use of the form is only a recommendation, and failure to use it in the withdrawal process does not constitute invalidity of the withdrawal. The deadline for withdrawal from the Contract expires after 14 days from the date of concluding the contract for the Service. To meet the deadline for withdrawal from the contract, it is sufficient for the Client to send information regarding the exercise of their right to withdraw from the contract before the expiry of the deadline for withdrawal from the contract.</p>
+
+                    <h6 class="fw-bold mt-4">§15 EFFECTS OF WITHDRAWAL FROM THE CONTRACT</h6>
+                    <p>In the event of withdrawal from the contract, the Studio shall return to the Client all payments received immediately, no later than 14 days from the day on which the Client informed the Studio of the exercise of the right to withdraw from the Contract. The Studio will make the refund using the same payment methods as were used by the Client in the original transaction.</p>
+
+                    <h6 class="fw-bold mt-4">§16 EXCLUSION OF THE RIGHT TO WITHDRAW</h6>
+                    <p>The Client loses the right to withdraw from a contract concluded outside the Studio if the Service has been performed by the Studio; including if it was performed before the expiry of the deadline for withdrawal from the Contract, the Client loses the right to withdraw from the contract concluded with the Studio. The Client is not entitled to the right to withdraw from a contract for the performance of a tattoo concluded outside the Studio, the Pattern of which is created by the Tattooer at the Client's request according to their individual preferences (based on the description or references of the Client provided to the Tattooer).</p>
+
+                    <h6 class="fw-bold mt-4">§17 COMPLAINTS</h6>
+                    <p>The Client has the right to complain about the Service, which should be reported by the Client immediately after discovering a physical or legal defect in the subject of the performed Service. The Client has the right to demand a refund of all or part of the costs of the Service or the performance of free corrections. The complaint should be submitted in writing, in person at the Studio or by registered mail. The complaint should contain data enabling the identification of the Client, the subject of the complaint, and demands related to the complaint. In the event of receiving an incomplete complaint, the Studio will call upon the Client to complete it under pain of leaving the complaint without consideration. The Studio has 14 calendar days to consider the Client's complaint. In the event of a positive consideration of the complaint, the Studio will fulfill the Client's demands. The Studio has the right not to recognize the Client's complaint. In the event of a negative response, the Client has the right to appeal the Studio's decision within 14 calendar days. The Studio has 14 calendar days to consider the appeal. The Studio is not responsible for complications that occur after a correctly performed Service, preceded by qualification for the Service, instructions on contraindications and possible complications, as well as obtaining consent for the Service from the Client, if no contraindications to the Service were found during qualification. The Studio is not responsible for complications arising from the Client's failure to follow post-service recommendations. A model service complaint form constitutes an annex to the Regulations. However, the use of the form is only a recommendation, and failure to use it in the complaint process does not constitute invalidity of the complaint.</p>
+
+                    <h6 class="fw-bold mt-4">§18 OUT-OF-COURT METHODS OF SETTLING COMPLAINTS AND PURSUING CLAIMS</h6>
+                    <p>The Studio agrees to submit any disputes arising in connection with the performed Service to mediation proceedings. Details will be specified by the parties to the conflict. Any disputes related to the Services provided by the Studio will be resolved by common courts, and the applicable law is Polish law. The Client has the possibility to use an out-of-court method of considering complaints and pursuing claims. The rules of access to these procedures are available at the offices and on the websites of poviat (municipal) consumer ombudsmen, social organizations whose statutory tasks include consumer protection, Voivodeship Inspectorates of the Trade Inspection, and at the following internet addresses of the Office of Competition and Consumer Protection: 1) http://www.uokik.gov.pl/spory_konsumenckie.php; 2) http://www.uokik.gov.pl/sprawy_indywidualne.php; 3) http://www.uokik.gov.pl/wazne_adresy.php. There is also the possibility of using the online system for settling disputes between consumers and entrepreneurs at the EU level (ODR platform), which is available at: http://ec.europa.eu/consumers/odr.</p>
+
+                    <h6 class="fw-bold mt-4">§19 HYGIENIC STANDARDS OF THE STUDIO</h6>
+                    <p>The Studio strictly adheres to the sanitary requirements recommended by the Chief Sanitary Inspector and the guidelines of the Ministry of Health regarding the maintenance of order and hygiene in the Studio, preparation of the workstation where the Service will be performed, the obligation to disinfect surfaces in the Studio, as well as applies procedures appropriate for the handling of medical waste (waste generated during the performance of Services during which the continuity of tissue is broken). Workstations intended for the performance of the Service and devices used during the Service are disinfected each time and secured with disposable foil, which is removed after each Service. Tools used to perform the Service are disposable or subjected to sterilization.</p>
+
+                    <h6 class="fw-bold mt-4">§20 ORDER REGULATIONS</h6>
+                    <p>Every Client using the Studio's Services is obliged to comply with the provisions resulting from these Regulations. Each time the current and unified text of the Regulations, including all previous changes to its content, is available upon registration for the Service and at the Studio Reception. When using the Studio's Services, the Client is obliged in particular to: 1) possess valid documents allowing for the identification of their identity; 2) comply with the ban on bringing and consuming alcoholic beverages, intoxicants, smoking tobacco products, electronic cigarettes, and other substances on the Studio premises that could threaten the life or health of the Client, or cause or increase the risk of complications both during and after the Service; 3) for the duration of the Service, leave their clothes in a place designated for this in the Studio, and take valuables and money with them under pain of lack of responsibility of the Studio for things, valuables, and money left unattended. It is recommended to leave valuables at home; 4) for the duration of the performance of the Service, the Client is obliged to turn off all electronic devices, including in particular the mobile phone; 5) respect property owned by the Studio performing the Services; damages caused by the fault of the Client will be removed at their expense; 6) maintain cleanliness in the places they use; 7) comply with the recommendations of the Studio personnel; 8) comply with safety rules and fire protection regulations. Studio Clients may not: 1) use equipment and tools used to perform the Service without authorization; 2) start and turn off equipment independently; 3) enter rooms where Services are performed without the consent of the Studio personnel.</p>
+
+                    <h6 class="fw-bold mt-4">§21 PERSONAL DATA PROTECTION</h6>
+                    <p>The administrator of the Clients' personal data is Emilia Duszczyk, conducting business under the company name EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, address for service: ul. Wspólna Droga 12/26, 04-352 Warsaw, e-mail: emwitattoo@gmail.com. The Studio processes Clients' personal data, among others, for the purpose of fulfilling contracts and performing Services on the principles indicated in the Privacy Policy.</p>
+
+                    <h6 class="fw-bold mt-4">§22 FINAL PROVISIONS</h6>
+                    <p>Every Client using the Studio's Services is obliged to comply with the provisions resulting from these Regulations. In matters not regulated by these Regulations, the relevant provisions of the Civil Code, the Act on Consumer Rights, the Act on Copyright and Related Rights, and other generally applicable provisions shall apply. Any disputes arising from the performance of obligations related to a given Service will be resolved by the competent court, in accordance with the jurisdiction indicated in the Code of Civil Procedure.The Studio reserves the right to modify the provisions of these Regulations, provided that the changes introduced will not infringe the rights acquired by Clients before the changes to these Regulations came into force. Each time the current and unified text of the Regulations, including all its previous changes to its content, is available upon registration for the Service and on the Studio's website. These Regulations enter into force on April 29, 2026. Processing of personal data: the Client, by paying a deposit or undergoing a procedure without a deposit, expresses consent to the processing of personal data for the needs necessary to perform the tattoo service in accordance with the Act on the Protection of Personal Data (Journal of Laws No. 133, item 883). In accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) (Official Journal of the EU L No. 119, p. 1).</p>
+
+                    <h6 class="fw-bold mt-4">Annexes to the Regulations:</h6>
+                    <p><strong>MODEL WITHDRAWAL FORM</strong><br>(this form should be completed and sent back only if you wish to withdraw from the contract concluded with the Studio)<br>Addressee: EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, address for service: ul. Wspólna Droga 12/26, 04-352 Warsaw, e-mail: emwitattoo@gmail.com</p>
+                    <p>I _______ [first name, surname] hereby inform about my withdrawal from the sales contract of a Voucher/ for the provision of a tattoo service / other _______ [select as appropriate].<br>Date of conclusion of the contract: _______.<br>First name and surname of the consumer: _______.<br>Address of the consumer: _______.<br>Date of withdrawal: _______.<br>Signature of the consumer.</p>
+
+                    <p><strong>SERVICE COMPLAINT</strong><br>(this form should be completed and sent back only if you wish to complain about a service performed in the Studio)<br>Addressee: EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, address for service: ul. Wspólna Droga 12/26, 04-352 Warsaw, e-mail: emwitattoo@gmail.com</p>
+                    <p>I hereby notify that the Service performed on _______ by Emilia Duszczyk, who performed the Service consisting of a tattoo at EMWI TATTOO Studio, was performed defectively.<br>The defect consists of _______ [please describe exactly what the detected defect is].<br>The defect was found on _______.<br>Due to the above, based on the Act of 23 April 1964 Civil Code, I demand:<br>
+                    - free repair of the service;<br>
+                    - reduction of the price of the service by the amount of _______ PLN;<br>
+                    - refund of the price paid for the service;<br>
+                    - other claim [please describe your claim]<br>
+                    *Please return the specified amount to the account / by postal order to my address _______ [complete].<br>
+                    *delete as unnecessary<br>
+                    Date of conclusion of the contract: _______.<br>
+                    First name and surname of the consumer: _______.<br>
+                    Address of the consumer: _______.<br>
+                    Signature of the consumer.</p>
+                `
+            },
+            pl: {
+                navWork: "Portfolio", navInfo: "Info", navBook: "Rezerwacja", navTerms: "Regulamin",
+                heroTitle: "Tatuaże<br>Geometryczne<br><span style='color: var(--text-main);'>Warszawa</span>",
+                heroDesc: "Minimalizm i autorskie projekty.<br>Abstrakcyjna geometria i harmonia proporcji.",
+                heroBtn: "Zarezerwuj termin",
+                infoTitle: "WAŻNE INFORMACJE I FAQ",
+                precareTitle: "// 01 Przed Sesją",
+                precareBody: `
+                    <ul class="mb-0">
+                        <li>Nie pij alkoholu na 24 godziny przed sesją.</li>
+                        <li>Zjedz obfity posiłek przed przyjściem.</li>
+                        <li>Załóż wygodne, luźne ubranie ułatwiające dostęp do tatuowanego miejsca.</li>
+                    </ul>`,
+                aftercareTitle: "// 02 Gojenie",
+                aftercareBody: `
+                    <p class="small">Najważniejszym elementem dbania o nowy tatuaż jest utrzymanie go w czystości i odpowiednie nawilżenie. Słuchaj uważnie rad swojego tatuatora, stosuj się do poniższych zaleceń, a zminimalizujesz ryzyko jakichkolwiek problemów podczas procesu gojenia.</p>
+                    
+                    <h6 class="fw-bold mt-4">Opcja 1: Second Skin („druga skóra”) + żel utrwalający (sealing gel)</h6>
+                    <p class="small mb-2">Wodoodporna, oddychająca folia (second skin) jest nakładana na świeży tatuaż, aby chronić go przed brudem i bakteriami. To zupełnie normalne, że pod folią gromadzi się osocze, tusz i krew. Nie martw się - to naturalny etap procesu gojenia, który nie wpływa na jakość tatuażu. W niektórych przypadkach, zwłaszcza przy tatuażach z cienką linią (fine-line), folia może pozostać całkowicie czysta.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Zdejmowanie:</strong> Folię można zdjąć po 12 do 24 godzinach. Delikatnie odklejaj ją pod ciepłą, bieżącą wodą. Możesz zauważyć, że schodzi wraz z nią złuszczający się naskórek; Twoja skóra w pełni zregeneruje się w ciągu najbliższego miesiąca.</li>
+                        <li><strong>Mycie:</strong> Po zdjęciu folii natychmiast umyj tatuaż. Użyj hipoalergicznego, bezzapachowego mydła (np. żelu do higieny intymnej lub tradycyjnego szarego mydła), aby uniknąć podrażnień.</li>
+                        <li><strong>Suszenie i nawilżanie:</strong> Osusz miejsce, delikatnie przykładając czysty, jednorazowy ręcznik papierowy.</li>
+                        <li><strong>Produkty do pielęgnacji:</strong> Nakładaj żel utrwalający na czystą i suchą skórę co najmniej 2 razy dziennie przez pierwsze 10 dni. Po 10 dniach zmień produkt na krem dołączony do zestawu do pielęgnacji i stosuj go przez kolejne 5 dni.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">Opcja 2: Podkłady higieniczne + żel utrwalający (sealing gel)</h6>
+                    <p class="small mb-2">Pozostaw podkład higieniczny założony przez tatuatora na całą noc i zdejmij go rano następnego dnia. Na podkładzie prawdopodobnie zobaczysz odbicie swojego tatuażu - jest to całkowicie normalne.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Mycie:</strong> Po zdjęciu podkładu natychmiast umyj tatuaż. Użyj hipoalergicznego, bezzapachowego mydła (np. żelu do higieny intymnej lub tradycyjnego szarego mydła), aby uniknąć podrażnień.</li>
+                        <li><strong>Suszenie i nawilżanie:</strong> Osusz miejsce, delikatnie przykładając czysty, jednorazowy ręcznik papierowy.</li>
+                        <li><strong>Produkty do pielęgnacji:</strong> Nakładaj żel utrwalający na czystą i suchą skórę co najmniej 2 razy dziennie przez pierwsze 10 dni. Po 10 dniach zmień produkt na krem dołączony do zestawu do pielęgnacji i stosuj go przez kolejne 5 dni.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">Opcja 3: Second Skin („druga skóra”) + krem (bez żelu utrwalającego)</h6>
+                    <p class="small mb-2">Wodoodporna, oddychająca folia (second skin) jest nakładana na świeży tatuaż, aby chronić go przed brudem i bakteriami. To zupełnie normalne, że pod folią gromadzi się osocze, tusz i krew. Nie martw się - to naturalny etap procesu gojenia, który nie wpływa na jakość tatuażu. W niektórych przypadkach, zwłaszcza przy tatuażach z cienką linią (fine-line), folia może pozostać całkowicie czysta.</p>
+                    <ul class="small mb-4">
+                        <li><strong>Zdejmowanie:</strong> Folię można zdjąć po 24 do 48 godzinach. Delikatnie odklejaj ją pod ciepłą, bieżącą wodą. Możesz zauważyć, że schodzi wraz z nią złuszczający się naskórek; Twoja skóra w pełni zregeneruje się w ciągu najbliższego miesiąca.</li>
+                        <li><strong>Mycie:</strong> Po zdjęciu folii natychmiast umyj tatuaż. Użyj hipoalergicznego, bezzapachowego mydła (np. żelu do higieny intymnej lub tradycyjnego szarego mydła), aby uniknąć podrażnień.</li>
+                        <li><strong>Suszenie i nawilżanie:</strong> Osusz miejsce, delikatnie przykładając czysty, jednorazowy ręcznik papierowy.</li>
+                        <li><strong>Produkty do pielęgnacji:</strong> Nakładaj krem do gojenia tatuażu na czystą i suchą skórę co najmniej 2 razy dziennie przez minimum 14 dni.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4">OGÓLNE ZASADY (Stosuj w każdym przypadku):</h6>
+                    <ul class="small mb-4">
+                        <li><strong>Poza domem:</strong> Jeśli jesteś w pracy lub nie masz dostępu do bieżącej wody, do delikatnego oczyszczenia tatuażu możesz użyć jednorazowych, nawilżanych, bezzapachowych chusteczek dla niemowląt.</li>
+                        <li><strong>Mniej znaczy więcej:</strong> Nie nakładaj zbyt dużej ilości kremu. Cienka warstwa w zupełności wystarczy - produkt jest bardzo wydajny.</li>
+                        <li><strong>Łuszczenie się skóry:</strong> Pełna regeneracja naskórka trwa około 30 dni. W tym czasie skóra będzie się łuszczyć. Pod żadnym pozorem nie drap ani nie skub tatuażu - martwy naskórek powinien zejść naturalnie podczas mycia.</li>
+                    </ul>
+
+                    <h6 class="fw-bold mt-4 text-danger">WAŻNA UWAGA!</h6>
+                    <ul class="small mb-4">
+                        <li><strong>Zaczerwienienie:</strong> Po zdjęciu folii skóra może być zaczerwieniona. To powszechna reakcja, zwłaszcza u osób z bardzo wrażliwą skórą.</li>
+                        <li><strong>Aktywność fizyczna:</strong> Zrezygnuj z intensywnego wysiłku fizycznego i treningów przez pierwsze 7 - 10 dni.</li>
+                        <li><strong>Bakterie:</strong> Unikaj miejsc o dużym skupisku bakterii (takich jak siłownia) przez co najmniej 7 dni.</li>
+                        <li><strong>Woda:</strong> Podczas procesu gojenia (minimum 21 dni) nie mocz tatuażu przez dłuższy czas. Zrezygnuj z długich kąpieli w wannie, unikaj basenów, saun oraz wszelkiego rodzaju otwartych zbiorników wodnych.</li>
+                        <li><strong>Wakacje:</strong> Wakacje tuż po zrobieniu tatuażu odpadają - piasek, woda i ostre słońce bardzo szkodzą procesowi gojenia.</li>
+                        <li><strong>Higiena:</strong> Po sesji śpij w czystej, świeżo wypranej pościeli.</li>
+                        <li><strong>Ochrona przeciwsłoneczna:</strong> Nie nakładaj kremu z filtrem (SPF) na świeży tatuaż przez pierwsze 30 dni od sesji.</li>
+                    </ul>
+                `,
+                faqTitle: "// 03 FAQ",
+                faqBody: `
+                    <p class="small fw-bold mb-1">Co to jest „sesja”?</p>
+                    <p class="small mb-4">Sesja obejmuje cały czas, który spędzamy razem w studiu – od pierwszej kreski na tablecie po ostatnie dotknięcie igły. W tym czasie: robimy projekt, przymierzamy go do ciała, tatuujemy i robimy przerwy na odpoczynek.</p>
+
+                    <p class="small fw-bold mb-1">Kiedy są wolne terminy?</p>
+                    <p class="small mb-4">Dostępność terminów zależy od rodzaju tatuażu, jaki chcesz wykonać. Inny jest czas oczekiwania na sesję trwającą godzinę, a inny na 6 lub 12 godzin. Opisz jaki tatuaż chcesz wykonać, a podeślę Ci listę dostępnych dat.</p>
+
+                    <p class="small fw-bold mb-1">Jak się zapisać?</p>
+                    <p class="small mb-4">Pracuję w studiu Lunatyk, w Warszawie. Zapisy otwarte są cały czas. Pamiętaj proszę, że na odpowiedź możesz czekać kilka dni (w pierwszej kolejności zajmuję się tatuowaniem. Jeśli mam kilka długich sesji dzień po dniu, nie mam siły wieczorami siadać do korespondencji).<br>
+                    • Wypełnij formularz online (link w bio na Insta).<br>
+                    • Jeśli wolisz maila, pisz na: emwitattoo@gmail.com.<br>
+                    <strong>Ważne!</strong> W wiadomości napisz: co chcesz zrobić, gdzie na ciele i jak duże. Dorzuć zdjęcia moich prac, które Ci się podobają, żebym wiedziała, w jaki styl celujemy.</p>
+
+                    <p class="small fw-bold mb-1">Ile to kosztuje?</p>
+                    <p class="small mb-4">Cena minimalna to 400 zł. Pół sesji (3h) 1200 zł. Pełna sesja (6h) to koszt 2200 zł.</p>
+
+                    <p class="small fw-bold mb-1">Czy muszę wpłacić zadatek?</p>
+                    <p class="small mb-4">Tak, rezerwacja terminu następuje po wpłacie zadatku (np. 100-400 zł). Zadatek jest bezzwrotny. Jeśli nie pojawisz się na sesji, odwołasz ją lub przełożysz później niż 5 dni (120h) przed terminem zadatek przepada. Zmiana terminu możliwa jest raz, nie później niż 5 dni (120h) przed terminem.</p>
+
+                    <p class="small fw-bold mb-1">Jak mogę zapłacić?</p>
+                    <p class="small mb-4">Zadatek opłacany jest online. Preferowana forma płatności za resztę sesji to gotówka.</p>
+
+                    <p class="small fw-bold mb-1">Skąd takie ceny?</p>
+                    <p class="small mb-4">Może Ci się wydawać, że moja wycena to dużo na dany rozmiar tatuażu, ale u mnie nie płacisz za "zamalowaną powierzchnię", tylko za czas i precyzję. Geometria i cienkie linie wymagają znacznie więcej pracy, skupienia i czasu niż duże, cieniowane płaszczyzny. Mały, ale ultra-precyzyjny wzór może wymagać tyle samo (lub więcej) wysiłku, co ogromny cieniowany tatuaż.</p>
+
+                    <p class="small fw-bold mb-1">Czy zrobisz dla mnie indywidualny projekt?</p>
+                    <p class="small mb-4">Tak, ale pamiętaj: nie kopiuję cudzych prac. Prac innych artystów możemy użyć wyłącznie jako inspiracji. Robię tatuaże w swoim stylu (zobacz go na Insta).</p>
+
+                    <p class="small fw-bold mb-1">Kiedy zobaczę projekt?</p>
+                    <p class="small mb-4">Projekt tworzymy razem, na żywo, w dniu sesji, żeby idealnie pasował do Twojego ciała i anatomii.</p>
+
+                    <p class="small fw-bold mb-1">Nie wiem jaki chcę tatuaż, czy możesz mi coś zaproponować?</p>
+                    <p class="small mb-4">Nie musisz być artystą ani mieć w głowie gotowego projektu – od tego masz mnie. Ważne jest jednak, żebyś przed sesją wiedział/a mniej więcej, jaki kierunek Ci się podoba, a co zupełnie odpada. Finalnie to Ty decydujesz, co zostanie na Twojej skórze na zawsze. Jeśli potrzebujesz 3 godzin, żeby się zdecydować na konkretną kreskę – nie ma problemu, ale pamiętaj, że cały ten czas wlicza się w koszt sesji. Jeśli będziesz bardzo niezdecydowany/a i nie zdążymy skończyć wzoru, będziemy musieli umówić kolejny płatny termin.</p>
+
+                    <p class="small fw-bold mb-1">Czy płacę za czas rysowania?</p>
+                    <p class="small mb-4">Tak. Sesja to kompleksowa usługa. Moja praca to nie tylko obsługa maszynki do tatuażu, ale przede wszystkim stworzenie unikalnego wzoru. Dobre przygotowanie projektu to 50% sukcesu – dzięki temu, że poświęcimy na to odpowiednią ilość czasu w studiu, Twój tatuaż będzie wyglądał profesjonalnie, a nie jak przypadkowa naklejka. Rysowanie na papierze wybacza błędy (można użyć gumki), projektowanie na Twoim ciele – nie. Dlatego każda minuta poświęcona na dopieszczenie wzoru przed wbiciem igły jest inwestycją w to, że będziesz kochać ten tatuaż do końca życia.</p>
+
+                    <p class="small fw-bold mb-1">Czyli możemy rysować „bez końca”?</p>
+                    <p class="small mb-4">Nie. Zawsze staram się posuwać etap rysowania do przodu tak sprawnie jak to możliwe, jednocześnie bez wywoływania presji czasu. Wykonałam kilkaset tatuaży rysowanych wspólnie z klientami. Mój know-how pozwala mi poprowadzić Cię w odpowiednią stronę bez zbędnych opóźnień lub przestojów. Zawsze powtarzam moim klientom, że ich projekt rysują oni sami, ale moją ręką. Ja służę radą, doświadczeniem i wsparciem. Jeśli chcesz powiedzieć, że kierunek, w którym idziemy Ci się nie podoba, mów śmiało! Nie obrażam się! Byłoby idealnie gdybyśmy oboje byli zadowoleni z Twojego projektu, ale koniec końców to Twoja skóra i Twoja decyzja.</p>
+
+                    <p class="small fw-bold mb-1">Ile czasu zajmuje stworzenie projektu tatuażu?</p>
+                    <p class="small mb-4">Tatuaże odbijane z kalki (okręgi, góry, fale itp) zazwyczaj zamykają się w czasie 45-60 minut.<br>
+                    Opaski składające się z jednej, dwóch linii ok 30 min.<br>
+                    Linie typu “prosta kreska od ucha do nadgarstka” 60-90 min.<br>
+                    Większe kompozycje nawet ok 2 godzin.<br>
+                    <em>*Podany czas jest orientacyjny. Zależy od Twojej decyzyjności oraz Twojej anatomii w przypadku rysowania bezpośrednio na ciele. W 90% przypadków czas sesji podany przy wycenie odzwierciedla rzeczywistość. Kiedy pojawiają się opóźnienia i zachodzi obawa, że nie zmieścimy się w założonym czasie sesji informuję o tym jak najszybciej.</em></p>
+
+                    <p class="small fw-bold mb-1">Czy od razu muszę zgadzać się na wszystko?</p>
+                    <p class="small mb-4">Absolutnie nie. Masz czas, aby spokojnie się zastanowić, skonsultować ze mną czy z najbliższymi (zdalnie). Zachęcam do słuchania swojej intuicji i tego „co czujesz w brzuszku” :) Wtedy proces przebiega naturalnie i płynnie. Niezdrowy „overthinking” zdecydowanie utrudnia i nienaturalnie wydłuża sesję. Jeśli masz takie skłonności lepiej odpuść sobie tatuaż. Szkoda Twoich pieniędzy i mojego czasu.</p>
+
+                    <p class="small fw-bold mb-1">Co się stanie jeśli nie będę w stanie podjąć decyzji?</p>
+                    <p class="small mb-4">Nie ma obowiązku wykonania tatuażu na sesji, ale pamiętaj, że czas spędzony wspólnie na pracy nad projektem nie jest darmowy. Rysowanie to moja praca, nie hobby dla zabicia czasu. Jeśli zdecydujesz się opuścić studio bez tatuażu, rozliczamy się za czas spędzony nad projektem. Tatuażysta liczy pracę projektową na takich samych zasadach jak architekt czy grafik komputerowy.</p>
+
+                    <p class="small fw-bold mb-1">Czy mogę umówić się na konsultację?</p>
+                    <p class="small mb-4">Oczywiście! Masz do wyboru 3 opcje.<br>
+                    <strong>1. Konstrukcje trwające do 30 min, bez rysowania:</strong> Są bezpłatne. Umawiam je przed standardowo zaplanowanymi sesjami (zazwyczaj ok. godziny 10:00) w studiu lub online (Zoom lub Google Meet).<br>
+                    <strong>2. Konsultacja z rysowaniem projektu (1,5 godziny):</strong> Kosztuje 500 zł, z czego 300 przechodzi na poczet sesji tatuażu, który będziesz wykonywał :) Na przykładzie: umawiamy się na 1,5-godzinne spotkanie, na nim rysujemy projekt, rozliczamy się kwotą 500 zł. Tatuaż, który zaprojektowaliśmy zmieści się w kwocie (powiedzmy) 1200 zł. Z pierwotnie zapłaconych 500 zł, 300 pokrywa część ceny samego tatuażu, czyli po skończeniu sesji tatuażowej do uregulowania pozostaje 900 zł. Jeśli po konsultacji z rysowaniem projektu z jakiegoś powodu nie będziesz chciał umówić się na tatuaż, wówczas cała kwota 500 zł pokrywa koszt konsultacji. Jeśli umówimy się na wykonanie tatuażu, ale w międzyczasie zmienisz zdanie i projekt, który powstał na konsultacji "pójdzie do kosza", a my będziemy rysować nowy na sesji, wówczas tak samo, pełna kwota za konsultację pokrywa koszt konsultacji, ponieważ ta sama praca jest wykonana dwa razy.<br>
+                    <strong>3. Projekt w całości przed sesją:</strong> Program, którego używam do rysowania, zlicza czas pracy. Rozliczamy się godzinowo na tej podstawie. Im mniej wytycznych, im więcej wersji lub opcji tym droższy projekt. Nie rekomenduję tej opcji, ale jeśli bardzo Ci na tym zależy, możemy pójść tą drogą.</p>
+
+                    <p class="small fw-bold mb-1">Dlaczego musimy zrobić większy tatuaż?</p>
+                    <p class="small mb-4">Jeśli sugeruję większy rozmiar lub inną ilość detali, robię to dlatego, żeby Twój tatuaż za kilka lat nie zmienił się w ciemną plamę. Im więcej dasz mi miejsca („oddechu” w projekcie), tym tatuaż będzie wyglądał delikatniej i starzał się z większą klasą.</p>
+
+                    <p class="small fw-bold mb-1">Styl i technika - dlaczego to tyle trwa?</p>
+                    <p class="small mb-4">Tatuuję powoli i z chirurgiczną precyzją. Geometria nie wybacza błędów, tu każda linia musi być idealna.<br>
+                    • Jeśli chcesz wyjść po jednej sesji z całym rękawem – to nie u mnie.<br>
+                    • Jeśli zależy Ci na jakości, detalach i wzorze, który za kilka lat nadal będzie wyglądał ostro i czytelnie – zapraszam. Wybierasz precyzję zamiast pośpiechu.</p>
+
+                    <p class="small fw-bold mb-1">Czy mogę przyjść z kimś do towarzystwa?</p>
+                    <p class="small mb-4">Nie. Przy stanowisku jesteśmy tylko my dwoje, żeby nikt nam nie przeszkadzał i zachowany został reżim sanitarny.</p>
+
+                    <p class="small fw-bold mb-1">Jakich tuszy używasz?</p>
+                    <p class="small mb-4">Pracuję głównie na barwnikach Eclipse, InkStar, Dynamic i Pantera. Są bezpieczne i zgodne ze wszystkimi europejskimi normami (REACH).</p>
+
+                    <p class="small fw-bold mb-1">Czy robisz tatuaże na bliznach lub covery (zakrywanie starych wzorów)?</p>
+                    <p class="small mb-4"><strong>Blizny:</strong> Linie na bliźnie na 99% się rozleją. Najlepiej tatuować na nich elementy wypełnione czernią. Jeśli to jest dla Ciebie ok, wyślij mi dobre zdjęcie i napisz, ile lat ma blizna. Muszę ocenić, czy skóra się do tego nadaje.<br>
+                    <strong>Covery:</strong> Raczej nie. Mój styl jest zbyt lekki i ażurowy, żeby dobrze przykryć stary tatuaż. Wyjątkiem są korekty istniejących tatuaży geometrycznych - chętnie poprawię to co inni zepsuli (jeśli się da oczywiście).</p>
+
+                    <p class="small fw-bold mb-1">Czy poprawki są płatne?</p>
+                    <p class="small mb-4">Jeśli po wygojeniu zauważysz, że gdzieś wypadł tusz, pierwsza poprawka (do pół roku od sesji) jest zazwyczaj darmowa. Nie dotyczy to jednak korekt na życzenie (dodawanie nowego elementu lub zmiany, które nie były częścią oryginalnego projektu).</p>
+
+                    <p class="small fw-bold mb-1">Jak się przygotować? (Dla Twojego dobra!)</p>
+                    <p class="small mb-4"><strong>Skóra:</strong> Jeśli skóra jest sucha, tatuaż robi się trudniej, dłużej i gorzej się goi. Przez 2 tygodnie przed sesją pij dużo wody i codziennie balsamuj miejsce, gdzie będzie tatuaż.<br>
+                    <strong>Zdrowie:</strong> 24h przed sesją nie pij alkoholu, nie bierz leków rozrzedzających krew i ogranicz kawę. Zjedz porządne śniadanie!<br>
+                    <strong>Choroba:</strong> Jeśli bierzesz antybiotyk lub źle się czujesz – koniecznie daj znać wcześniej!<br>
+                    <strong>Nuda:</strong> Zabierz słuchawki! Będziemy spędzać ze sobą kilka godzin, a ja mimo, że lubię rozmawiać muszę też skupić się na pracy, więc rozrywka umili Ci czas.</p>
+
+                    <p class="small fw-bold mb-1">Czego nie tatuujesz?</p>
+                    <p class="small mb-4">Nie wykonuję tatuaży na wewnętrznej stronie dłoni, podeszwach stóp ani w miejscach intymnych. Nie robię też wzorów patriotycznych, obraźliwych, ani kopii prac innych artystów.</p>
+
+                    <p class="small fw-bold mb-1">Kiedy nie mogę się tatuować?</p>
+                    <p class="small mb-4">Jeśli jesteś w ciąży, karmisz piersią, masz aktywną opryszczkę, świeżą opaleniznę (skóra schodzi płatami) lub jesteś pod wpływem jakichkolwiek używek – musimy przełożyć termin. Twoje zdrowie i wygląd tatuażu są najważniejsze.</p>
+
+                    <p class="small fw-bold mb-1">Co mam na siebie założyć?</p>
+                    <p class="small mb-4">Coś wygodnego! Pamiętaj, że tusz może coś pobrudzić, więc nie zakładaj najlepszych ubrań. Najlepiej mieć coś rozpinanego (bluza/sweter), żeby łatwo odsłonić miejsce tatuowania.</p>
+                    
+                    <p class="small fw-bold mb-1">Jak dbać o nowy tatuaż?</p>
+                    <p class="small mb-4">Po sesji dostaniesz ode mnie dokładną instrukcję pielęgnacji na maila. Na miejscu zabezpieczę Twój tatuaż specjalną folią (second skin) lub opatrunkiem. Nie planuj basenu, sauny ani mocnego słońca przez minimum 3 tygodnie po dziaraniu! Wstrzymaj się z uprawianiem sportu na 7-10 dni po sesji.</p>
+                    
+                    <p class="small fw-bold mt-4 mb-0">Masz jakiekolwiek inne pytania? Napisz na emwitattoo@gmail.com :)</p>
+                `,
+                bookTitle: "REZERWACJA",
+                bookSub: "Proszę o podanie szczegółów dotyczących umiejscowienia i wielkości.",
+                formName: "Imię i Nazwisko",
+                formPlacement: "Umiejscowienie",
+                formSize: "Szacowany rozmiar (cm)",
+                formDesc: "Opis pomysłu",
+                formSubmit: "Wyślij Zapytanie",
+                phPlacement: "np. lewe przedramię",
+                phSize: "np. 15x10cm",
+                termsTitle: "REGULAMIN",
+                termsBody: `
+                    <h6 class="fw-bold">REGULAMIN STUDIA EMWI TATTOO</h6>
+                    <p class="mb-4">Obowiązuje od 29.04.2026 r.<br>Zaktualizowany: 07.06.2026</p>
+                    <p>Niniejszy dokument określa zasady rezerwacji terminów oraz realizacji sesji tatuażu w salonie EMWI TATTOO.</p>
+                    <p>W paragrafach 7, 8 i 9 szczegółowo opisaliśmy wszelkie przeciwwskazania medyczne oraz potencjalne konsekwencje zdrowotne związane z zabiegiem. Prosimy o uważne przeczytanie tych sekcji jeszcze przed podjęciem ostatecznej decyzji o rezerwacji.</p>
+
+                    <h6 class="fw-bold mt-4">Co dokładnie znajdziesz w tym regulaminie?</h6>
+                    <p><strong>Zapisy i przygotowanie:</strong> Procedury zgłoszeń, wytyczne dotyczące przesyłania własnych inspiracji oraz kulisy powstawania indywidualnego projektu.</p>
+                    <p><strong>Kwestie finansowe:</strong> Warunki niezbędne do skutecznego zarezerwowania terminu, zasady wpłaty zadatku oraz sytuacje, w których studio ma prawo go zatrzymać (jeśli sesja zostanie odwołana z Twojej winy).</p>
+                    <p><strong>Reklamacje i rezygnacje:</strong></p>
+                    <p>Reklamacja – instrukcja postępowania, jeśli uważasz, że usługa została wykonana wadliwie.</p>
+                    <p>Odstąpienie od umowy – zasady korzystania z tzw. „prawa do namysłu”. Pamiętaj jednak, że przysługuje ono wyłącznie wtedy, gdy tatuaż nie powstaje na Twoje indywidualne zamówienie (w przypadku autorskich projektów prawo to jest prawnie wyłączone).</p>
+
+                    <h6 class="fw-bold mt-4">Dlaczego ten dokument ma taką formę?</h6>
+                    <p>Choć lektura może zająć chwilę, zależy nam przede wszystkim na Twoim bezpieczeństwie, pełnej przejrzystości naszych relacji oraz spełnieniu wszelkich obowiązków prawnych. Przekazujemy Ci te informacje z wyprzedzeniem, abyś mógł/mogła spokojnie się z nimi zapoznać.</p>
+
+                    <h6 class="fw-bold mt-4">Informacje formalne</h6>
+                    <p>Do zawarcia umowy dochodzi poprzez kontakt ze studiem na warunkach opisanych w dalszej części dokumentu. Treść tego regulaminu nie stanowi oferty handlowej w świetle Kodeksu Cywilnego, a jedynie zaproszenie do rozpoczęcia rozmów i zawarcia umowy.</p>
+                    <p>Jeśli jakikolwiek zapis budzi Twoje wątpliwości, śmiało do nas napisz lub zadzwoń – chętnie odpowiemy na każde pytanie.</p>
+                    <p>Poniżej przedstawiamy krótki przewodnik, który w prosty sposób obrazuje kluczowe etapy naszej współpracy:</p>
+                    <p><strong>Dni robocze</strong> – dni od poniedziałku do piątku, z wyłączeniem dni ustawowo wolnych od pracy w Polsce wskazanych w ustawie o dniach wolnych od pracy;</p>
+                    <p><strong>Klient</strong> – osoba fizyczna, pod warunkiem posiadania pełnej zdolności do czynności prawnych lub ograniczonej zdolności do czynności prawnych pod warunkiem posiadania zgody Opiekuna prawnego, która zawiera Umowę na wykonanie Usługi ze Studiem, na warunkach opisanych w niniejszym Regulaminie;</p>
+                    <p><strong>Opiekun prawny</strong> – osoba fizyczna będąca przedstawicielem ustawowym osoby niepełnoletniej;</p>
+                    <p><strong>Opłata projektowa</strong> – dodatkowa opłata za zmiany w zaakceptowanym przez Klienta Wzorze tatuażu;</p>
+                    <p><strong>Pigmenty</strong> – mieszaniny używane do wykonania Tatuażu, dostosowane do obowiązującego Rozporządzenia (WE) Parlamentu Europejskiego i Rady 1907/2006 z dnia 18 grudnia 2006 r. w sprawie rejestracji, oceny, udzielania zezwoleń i stosowanych ograniczeń w zakresie chemikaliów (REACH), utworzenia Europejskiej Agencji Chemikaliów, zmieniające dyrektywę 1999/45/WE oraz uchylające rozporządzenie Rady (EWG) nr 793/93 i rozporządzenie Komisji (WE) nr 1488/94, jak również dyrektywę Rady 76/769/EWG i dyrektywy Komisji 91/155/EWG, 93/67/EWG, 93/105/WE i 2000/21/WE, zawierające na opakowaniu informacje: „Mieszanina przeznaczona do stosowania w tatuażach lub makijażu permanentnym”, numer partii, wykaz wszystkich składników mieszaniny w kolejności malejącej, informacje o obecności jakichkolwiek związków niklu i chromu, oznaczenie substancji regulujących pH oraz dodatkowe informacje na temat bezpieczeństwa (te mogą znaleźć się na opakowaniu lub w instrukcji użytkowania);</p>
+                    <p><strong>Regulamin</strong> – warunki umowne wykonywania Usług świadczonych przez Studio na rzecz Klienta, opisane w niniejszym dokumencie;</p>
+                    <p><strong>Rezerwacja</strong> – Wstępna rezerwacja terminu, która została potwierdzona przez Klienta poprzez wpłatę zadatku na warunkach wskazanych w Regulaminie;</p>
+                    <p><strong>Sesja tatuatorska</strong> – czas Usługi, w trakcie której projektowany jest Wzór tatuażu a następnie jest on przenoszony na ciało Klienta przez wprowadzenie Pigmentu do skóry właściwej Klienta przez Tatuatora; czas całodniowej sesji tatuatorskiej jest ustalany indywidualnie i najczęściej wynosi od pięciu godzin zegarowych;</p>
+                    <p><strong>Studio</strong> – Emilia Duszczyk prowadząca działalność gospodarczą pod firmą EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, adres do doręczeń: ul. Wspólna Droga 12/26, 04-352 Warszawa;</p>
+                    <p><strong>Tatuaż</strong> – trwały efekt finalny przeniesienia Wzoru tatuażu podczas Sesji tatuatuatorskiej na ciało Klienta przy użyciu Pigmentów;</p>
+                    <p><strong>Usługa</strong> – to świadczona przez Studio na rzecz Klienta usługa polegająca na wykonaniu Tatuażu na podstawie zaakceptowanego Wzoru tatuażu za ustalone Wynagrodzenie, na zasadach określonych w niniejszym Regulaminie;</p>
+                    <p><strong>Voucher</strong> - dokument wystawiony przez Studio, umożliwiający realizację Usług świadczonych w Studiu albo umożliwiający płatność za Usługę świadczoną przez Studio zgodnie z obowiązującym Regulaminem i wartością posiadanego Vouchera;</p>
+                    <p><strong>Wstępna rezerwacja terminu</strong> – wstępny termin wykonania Usługi ustalany przy jej umawianiu, wymagający potwierdzenia poprzez wpłatę zadatku na rachunek bankowy Studia aby stać się Rezerwacją;</p>
+                    <p><strong>Wolny wzór</strong> – już zaprojektowany, gotowy autorski projekt Tatuażu, który Klient może zarezerwować przez Social Media Studia lub bezpośrednio w Studiu, na zasadach opisanych w niniejszym Regulaminie;</p>
+                    <p><strong>Wynagrodzenie</strong> – cena jaką Klient jest zobowiązany zapłacić za wykonaną Usługę;</p>
+                    <p><strong>Wstępny wzór tatuażu</strong> – projekt, szkic Wzoru tatuażu stworzony przez wybranego przez Klienta Tatuatora na podstawie opisu lub referencji Klienta dostarczonych przez Klienta w terminie do 7 dni przed wyznaczoną Sesją tatuatorską, udostępniany Klientowi do wglądu w dniu Sesji tatuatorskiej;</p>
+                    <p><strong>Wzór tatuażu</strong> – projekt Tatuażu tworzony podczas Sesji tatuatorskiej na bazie Wstępnego wzoru tatuażu przez wybranego przez Klienta Tatuatora albo z gotowych, wcześniej przygotowanych Wolnych wzorów.</p>
+
+                    <h6 class="fw-bold mt-4">§1 POSTANOWIENIA OGÓLNE</h6>
+                    <p>Niniejszy Regulamin określa ramowe zasady świadczenia i korzystania z Usług Studia i stanowi wraz z Polityką Prywatności integralną część umowy zawieranej przez Klienta ze Studiem, regulując w szczególności:<br>
+                    1 ) Postanowienia ogólne;<br>
+                    2 ) Umawianie Usługi;<br>
+                    3 ) Zadatek;<br>
+                    4 ) Zmianę terminu Usługi;<br>
+                    5 ) Wycenę tatuażu;<br>
+                    6 ) Wzór tatuażu;<br>
+                    7 ) Przeciwwskazania do wykonania usługi Tatuażu;<br>
+                    8 ) Możliwe skutki uboczne i powikłania po usłudze Tatuażu;<br>
+                    9 ) Przygotowanie do Usługi;<br>
+                    10 ) Zgodę na Usługę;<br>
+                    11 ) Odmowę wykonania Usługi;<br>
+                    12 ) Płatności;<br>
+                    13 ) Vouchery;<br>
+                    14 ) Prawo odstąpienia od Umowy;<br>
+                    15 ) Skutki odstąpienia od Umowy;<br>
+                    16 ) Wyłączenie prawa do odstąpienia;<br>
+                    17 ) Reklamacje;<br>
+                    18 ) Pozasądowe sposoby rozpatrywania reklamacji i dochodzenia roszczeń;<br>
+                    19 ) Standardy higieniczne Studia;<br>
+                    20 ) Przepisy porządkowe;<br>
+                    21 ) Ochronę danych osobowych;<br>
+                    22 ) Postanowienia końcowe.</p>
+                    <p>Definicje wskazane w Słowniczku stanowią integralną część Regulaminu, i o ile nie wskazano inaczej, mają znaczenie w nim zdefiniowane. W takim przypadku definicja w niniejszym Regulaminie jest zapisana z dużej litery.</p>
+                    <p>Klient zobowiązany jest do zapoznania się z udostępnionym Regulaminem przed zapisaniem się na Usługę, oraz do przestrzegania jego zasad. Potwierdzenie Rezerwacji przez wpłatę zadatku stanowi akceptację postanowień Regulaminu.</p>
+
+                    <h6 class="fw-bold mt-4">§2 UMAWIANIE USŁUGI</h6>
+                    <p>Wstępna rezerwacja terminu Usługi jest dokonywana osobiście przez Klienta za pośrednictwem wiadomości e-mail, wysłanej na adres Studia: emwitattoo@gmail.com lub innych środków komunikacji, w szczególności komunikatorów na portalach społecznościowych (Instagram Direct: @emwitattoo) oraz formularza zapisów Studia.</p>
+                    <p>Po dokonaniu Wstępnej rezerwacji terminu Usługi Klient ma obowiązek potwierdzenia Rezerwacji terminu Usługi w terminie do trzech dni roboczych, poprzez wpłatę zadatku na poczet rezerwowanej Usługi w wysokości wskazanej przez Studio.</p>
+                    <p>Klient jest zobowiązany pojawić się na umówionej Usłudze punktualnie.</p>
+                    <p>W przypadku spóźnienia Klienta na umówioną Usługę Studio zastrzega sobie prawo skrócenia czasu trwania Usługi, o czym Klient zostanie poinformowany przed przystąpieniem do jej wykonania. Za skróconą Usługę Klient jest zobowiązany zapłacić pełne Wynagrodzenie.</p>
+                    <p>W przypadku spóźnienia Klienta Studio zastrzega sobie prawo odmowy wykonania Usługi, jeśli osiągnięcie pożądanego przez Klienta efektu nie będzie możliwe w skróconym czasie. W tym przypadku Studio zachowa zadatek wpłacony wcześniej przez Klienta.</p>
+                    <p>Jeśli Studio odwoła umówioną Usługę, a został wpłacony zadatek, zostanie on zwrócony Klientowi w tej samej wysokości, w przypadku zgody Klienta na przełożenie Zarezerwowanego terminu Usługi Studio zatrzymuje zadatek.</p>
+                    <p>Jeśli wykonanie Usługi opóźni się z winy Studia, Usługa nie zostanie skrócona.</p>
+
+                    <h6 class="fw-bold mt-4">§3 ZADATEK</h6>
+                    <p>Wstępny termin Usługi jest określany przy jej umawianiu, aby zarezerwować termin Usługi, należy w terminie do trzech dni roboczych wpłacić zadatek w wysokości wskazanej przez Studiu, w celu potwierdzenia Usługi, na rachunek bankowy Studia, w tytule przelewu Klient wpisuje swoje dane według schematu: zadatek, termin Usługi, imię, nazwisko.</p>
+                    <p>Brak wpłaty zadatku w wyznaczonym terminie oznacza, że nie dochodzi do skutecznego zarezerwowania terminu Usługi, a Studio anuluje Wstępną rezerwacje terminu Usługi.</p>
+                    <p>Podczas zapisywania się przez Klienta na kilka Wstępnych rezerwacji terminu Usługi, pobierany jest zadatek od każdej Wstępnej rezerwacji terminu, według wielokrotności stawki wskazanej w § 3 ust. 1 Regulaminu tj. za każdy wstępnie zarezerwowany termin osobno.</p>
+                    <p>Jeśli dojdzie do wykonania Usługi, zadatek jest zaliczany na poczet Wynagrodzenia za wykonaną Usługę.</p>
+                    <p>Zadatek przepada, gdy nie dojdzie do wykonania Usługi z przyczyn leżących po stronie Klienta, a w szczególności w przypadku:<br>
+                    1 ) niepojawieniu się Klienta na umówionej Usłudze;<br>
+                    2 ) odwołania / zmiany terminu umówionej Usługi z wyjątkiem przypadków wskazanych w § 4 ust. 1 Regulaminu;<br>
+                    3 ) złego stanu zdrowia Klienta powodującego odwołanie Usługi niepotwierdzonego zaświadczeniem lekarskim;<br>
+                    4 ) odmowy wykonania Usługi przez Studio z przyczyn wskazanych w Regulaminu, w szczególności wskazanych w § 7 i 11 Regulaminu;<br>
+                    5 ) niezaakceptowania przez Klienta przygotowanego przez Tatuatora Wzoru tatuażu (w tym przypadku zadatek jest zatrzymywany na poczet czasu poświęconego przez Tatuatora na projektowanie).</p>
+                    <p>Zadatek jest zwracany Klientowi w takiej samej wysokości, gdy nie dojdzie do wykonania Usługi z przyczyn leżących po stronie Tatuatora.</p>
+
+                    <h6 class="fw-bold mt-4">§4 ZMIANA TERMINU USŁUGI</h6>
+                    <p>Klientowi przysługuje jednokrotna zmiana terminu Rezerwacji bez utraty zadatku, jeśli zostanie dokonana maksymalnie do 5 dni (120 godzin do rozpoczęcia trwania sesji) przed umówionym terminem Usługi. Zmiana w krótszym okresie niż do 5 dni roboczych (120 godzin do rozpoczęcia trwania sesji) przed terminem Rezerwacji skutkuje utratą zadatku.</p>
+                    <p>Studio ma prawo do zmiany terminu Rezerwacji, jeżeli uzna, że u Klienta wystąpiły przeciwwskazania do wykonania Usługi opisane w § 7 i § 11 Regulaminu. Jak również w przypadku, kiedy stan fizyczny Klienta lub jego skóry uniemożliwia poprawne wykonanie Usługi.</p>
+
+                    <h6 class="fw-bold mt-4">§5 WYCENA TATUAŻU</h6>
+                    <p>Wynagrodzenie za Sesję tatuatorską ustalane jest z Klientem indywidualnie i uzależnione jest w szczególności od:<br>
+                    1 ) doświadczenia Tatuatora, który stworzy Wzór tatuażu, a następnie wykona Sesję tatuatorską;<br>
+                    2 ) rodzaju Wzoru, jego wielkości, szczegółowości i wybranej techniki tatuatorskiej;<br>
+                    3 ) szacowanego czasu potrzebnego na wykonanie Sesji tatuatorskiej.</p>
+                    <p>Wyceny dokonuje Studio lub osobiście Tatuator w uzgodnieniu z Klientem.</p>
+                    <p>Wynagrodzenie może ulec zmianie w przypadku zmiany okoliczności wskazanych w § 5 ust. 1 pkt 2 i pkt 3 Regulaminu.</p>
+                    <p>W przypadku przerwania Sesji tatuatorskiej z powodów leżących po stronie Klienta Sesja tatuatorska jest rozliczana godzinowo według stawki 400 PLN, z zaokrągleniem do pełnej godziny.</p>
+
+                    <h6 class="fw-bold mt-4">§6 WZÓR TATUAŻU</h6>
+                    <p>Tematyka, styl, szczegółowość i wielkość Wzoru tatuażu jest ustalana z Klientem przy Wstępnej rezerwacji terminu. Klient przedstawia swoje oczekiwania m.in. poprzez dostarczenie zdjęć referencyjnych i inspiracji przesłanych na adres e-mail wybranego Tatuatora.</p>
+                    <p>Wzór tatuażu jest przygotowywany w dniu Sesji tatuatorskiej przez Tatuatora na podstawie zaakceptowanego przez Klienta Wstępnego wzoru tatuażu, stworzonego na podstawie: opisu, zdjęć referencyjnych i inspiracji Klienta dostarczonych przez Klienta w terminie do 7 dni przed wyznaczoną Sesją tatuatorską albo z gotowych, wcześniej przygotowanych Wzorów Tatuatora udostępnionych w Mediach Społecznościowych.</p>
+                    <p>Sesja tatuatorska wykonywana jest na podstawie autorskiego Wzoru tatuażu stworzonego przez wybranego przez Klienta Tatuatora albo Wolnego wzoru. Istnieje możliwość wykonania tatuażu na podstawie projektu/zdjęcia dostarczonego przez Klienta, w takim przypadku Studio odbierze od Klienta oświadczenie, że posiada on majątkowe prawa autorskie do wykorzystania projektu/zdjęcia, jak również, że projekt/zdjęcie nie narusza praw autorskich osobistych lub majątkowych osób trzecich, w tym także prawa do wizerunku oraz dóbr osobistych osób trzecich i jest wolne od jakichkolwiek obciążeń lub ograniczeń o charakterze rzeczowym lub obligacyjnym oraz wad prawnych i fizycznych. W przypadku, gdy udostępniony przez Klienta projekt/zdjęcie, wbrew zapewnieniu Klienta, naruszać będą prawa osób trzecich, Klient zobowiąże się do zwrotu na rzecz Studia wszelkich kosztów, szkód, strat, nie wyłączając kosztów obsługi prawnej, które Studio z tego tytułu poniesie.</p>
+                    <p>Czas potrzebny na projektowanie Wzoru tatuażu i wprowadzenie do niego zmian zalicza się na poczet czasu Sesji tatuatorskiej.</p>
+                    <p>Wzór tatuażu jest przedstawiany Klientowi do akceptacji w dniu Sesji tatuatorskiej.</p>
+                    <p>Tatuaż jest wyceniany i wykonywany po zaakceptowaniu przez Klienta Wzoru tatuażu w całości.</p>
+                    <p>W przypadku niezaakceptowania Wstępnego wzoru tatuażu i/lub Wzoru tatuażu przez Klienta, pomimo korekty wzoru Studio zatrzymuje zadatek na poczet czasu poświęconego przez Tatuatora na projektowanie.</p>
+                    <p>W przypadku wprowadzania zmian do Wzoru tatuażu po jego akceptacji przez Klienta, Klient zobowiązany jest do uiszczenia Opłaty projektowej w wysokości ustalonej przez Tatuatora i uzależnionej od charakteru i zakresu zmian. Opłata projektowa nie ulega zaliczeniu na poczet Wynagrodzenia za Sesje tatuatorską.</p>
+
+                    <h6 class="fw-bold mt-4">§7 PRZECIWWSKAZANIA DO WYKONANIA USŁUGI TATUAŻU</h6>
+                    <p>Świadczone przez Studio Usługi polegające na wykonywaniu Tatuażu można uznać za inwazyjne, w związku z czym Studio rekomenduje każdorazową konsultację z lekarzem przed dokonaniem Wstępnej rezerwacji terminu Usługi, szczególnie w przypadku zaobserwowania u siebie przeciwwskazań względnych. Natomiast w przypadku zaobserwowania przeciwwskazań bezwzględnych - nie rezerwowania terminu; a w przypadku przeciwwskazań czasowych - wstrzymaniem się z rezerwacją terminu do czasu ich ustąpienia.</p>
+                    <p>Studio informuje, że przeciwwskazania do wykonania Usługi możemy podzielić na:<br>
+                    1 ) przeciwwskazania bezwzględne – wykonanie Usługi jest całkowicie zabronione:<br>
+                    2 ) przeciwwskazania względne – wykonanie Usługi wymaga indywidualnej oceny oraz zgody lekarza:<br>
+                    3 ) przeciwwskazania czasowe – Usługa może zostać wykonana po ustąpieniu przeszkody.</p>
+                    <p>Tatuaż nie może zostać wykonany, jeśli Klient zaobserwował u siebie jakiekolwiek bezwzględne przeciwwskazanie:<br>
+                    1 ) alergia na składniki barwników – potwierdzona reakcja alergiczna na pigmenty używane w tatuażu, Klient może się zapoznać z używanymi Pigmentami i ich składem;<br>
+                    2 ) aktywne infekcje skórne – np. liszajec zakaźny, opryszczka, grzybica;<br>
+                    3 ) choroby autoimmunologiczne skóry w fazie aktywnej – np. łuszczyca, toczeń rumieniowaty;<br>
+                    4 ) zaburzenia krzepnięcia krwi – np. hemofilia, stosowanie leków przeciwzakrzepowych;<br>
+                    5 ) nowotwory skóry – podejrzenie lub potwierdzenie obecności zmian nowotworowych w miejscu planowanego tatuażu;<br>
+                    6 ) ciąża i karmienie piersią – potencjalne ryzyko reakcji na pigment lub infekcji;<br>
+                    7 ) ciężkie alergie kontaktowe – np. na lateks lub substancje dezynfekcyjne stosowane podczas zabiegu;<br>
+                    8 ) nieuregulowana cukrzyca – zwiększone ryzyko infekcji i problemów z gojeniem się skóry;<br>
+                    9 ) zakażenia ogólnoustrojowe – np. HIV, WZW typu B i C, w szczególności w przypadku braku kontroli medycznej;<br>
+                    10 ) epilepsja – ryzyko wystąpienia napadu podczas zabiegu.</p>
+                    <p>Tatuaż może zostać wykonany po ocenie stanu zdrowia i za zgodą lekarza w przypadku występowania jakiegokolwiek przeciwwskazania względnego:<br>
+                    1 ) choroby autoimmunologiczne w remisji – np. łuszczyca, jeśli zmiany skórne nie są aktywne;<br>
+                    2 ) alergie skórne – mogą wymagać testu na obecność uczulenia na Pigment;<br>
+                    3 ) zaburzenia hormonalne – np. nieuregulowana tarczyca, które mogą wpływać na proces gojenia;<br>
+                    4 ) przebyte infekcje wirusowe – np. opryszczka (ryzyko nawrotu w miejscu tatuażu);<br>
+                    5 ) leki immunosupresyjne lub sterydowe – osłabienie układu odpornościowego zwiększa ryzyko powikłań;<br>
+                    6 ) bliznowce i skłonność do tworzenia blizn przerostowych – większe ryzyko nieprawidłowego gojenia.</p>
+                    <p>Tatuaż nie może zostać wykonany aż do czasu ustąpienia tymczasowego przeciwwskazania:<br>
+                    1 ) infekcje wirusowe i bakteryjne – np. przeziębienie, grypa, angina;<br>
+                    2 ) świeże oparzenia lub uszkodzenia skóry, w tym opalenizna – miejsce tatuażu musi być całkowicie zagojone;<br>
+                    3 ) stosowanie antybiotyków – należy odczekać co najmniej 2 tygodnie po zakończeniu kuracji;<br>
+                    4 ) niedawno przeprowadzone zabiegi kosmetyczne – np. depilacja laserowa, peelingi chemiczne (minimum 2–4 tygodnie przerwy);<br>
+                    5 ) stany zapalne skóry – np. egzema w miejscu planowanego tatuażu;<br>
+                    6 ) ciąża lub karmienie piersią – tatuaż możliwy po zakończeniu karmienia i stabilizacji organizmu.</p>
+                    <p>Wstępna rezerwacja terminu przez Klienta jest równoznaczna z tym, że Klient zapoznał się z powyższą listą przeciwwskazań i potwierdza, że żadne z nich nie występuje w jego przypadku. Klient zobowiązuje się również do poinformowania Studia o jakichkolwiek zmianach swojego stanu zdrowia, które mogłyby stanowić przeciwwskazanie do wykonania Tatuażu celem odwołania lub zmiany terminu Rezerwacji Usługi.</p>
+
+                    <h6 class="fw-bold mt-4">§8 MOŻLIWE SKUTKI UBOCZNE I POWIKŁANIA PO USŁUDZE TATUAŻU</h6>
+                    <p>Pomimo dochowania najwyższej staranności i utrzymywania wysokich standardów sanitarnych podczas wykonywania Usługi, Klient powinien być świadomy, że wykonanie Tatuażu może wiązać się z wystąpieniem skutków ubocznych i/albo powikłań opisanych poniżej.</p>
+                    <p>Skutki uboczne są to przewidywane i zazwyczaj naturalne reakcje organizmu na Usługę, są one tymczasowe i najczęściej nie wymagają interwencji medycznej. Możliwe skutki uboczne po Tatuażu to:<br>
+                    1 ) zaczerwienienie i obrzęk w miejscu wykonania Usługi, które ustępują w ciągu kilku dni,<br>
+                    2 ) lekki ból lub dyskomfort w trakcie gojenia,<br>
+                    3 ) strupki i łuszczenie naskórka w trakcie regeneracji skóry.</p>
+                    <p>Powikłania – to nieprzewidziane i niepożądane następstwa wykonania Usługi, które mogą wymagać pomocy medycznej. Klient może doświadczyć następujących powikłań po wykonaniu Tatuażu:<br>
+                    1 ) Powikłania uznawane za częste:<br>
+                    a ) wynaczynienia krwi – niewielkie krwawienie z uszkodzonych naczyń w trakcie zabiegu;<br>
+                    b ) obrzęk w miejscu wykonania tatuażu – utrzymujący się do 3 dni, związany z podrażnieniem tkanek;<br>
+                    c ) stan zapalny – miejscowy, czasami towarzyszy mu stan podgorączkowy;<br>
+                    d ) zmiana koloru pigmentu – spowodowana procesami gojenia, reakcją skóry lub wpływem promieni UV;<br>
+                    e ) infekcja bakteryjna – najczęściej wynik zaniedbań higieny w okresie gojenia, np. zapalenie mieszków włosowych.<br>
+                    2 ) Powikłania rzadkie (występujące u niewielkiej liczby osób):<br>
+                    a ) alergia kontaktowa na barwnik – reakcja alergiczna na składniki Pigmentu;<br>
+                    b ) reakcja fitotoksyczna – zwiększona wrażliwość skóry na promieniowanie świetlne w miejscu tatuażu;<br>
+                    c ) migracja Pigmentu – przemieszczanie się barwnika poza obszar tatuażu z powodu reakcji immunologicznej;<br>
+                    d ) blizny przerostowe i bliznowce – u osób predysponowanych do nadmiernego tworzenia blizn;<br>
+                    e ) infekcja wirusowa – np. opryszczka w miejscu tatuażu, jeśli układ odpornościowy jest osłabiony;<br>
+                    f ) objaw Köbnera – wykonany tatuaż może wywołać objawy chorób skóry o podłożu immunologicznym, takich jak łuszczyca.<br>
+                    3 ) Powikłania bardzo rzadkie (wyjątkowe sytuacje, wymagające szczególnej uwagi):<br>
+                    a ) ziarniniaki – guzki w tkance podskórnej, będące reakcją organizmu na drobinki Pigmentu jako ciało obce;<br>
+                    b ) nasilenie lub wznowienie chorób przewlekłych – związane z osłabieniem układu immunologicznego;<br>
+                    c ) atrofia mięśni – możliwa w wyniku infekcji głębokich lub nieprawidłowej pielęgnacji;<br>
+                    d ) sepsa – w wyniku ciężkiej infekcji bakteryjnej, jeśli nie zostanie w porę podjęte leczenie;<br>
+                    e ) reakcje anafilaktyczne – na użyte środki chemiczne (np. pigmenty, środki do pielęgnacji);<br>
+                    f ) nowotworzenie skóry w miejscu tatuażu – (hipotetyczne, brak jednoznacznych dowodów naukowych, jednak teoretyczne ryzyko związane z reakcją na pigmenty).<br>
+                    g ) tromboflebitis – zapalenie żył powierzchownych w wyniku uszkodzenia naczyń podczas tatuażu.</p>
+                    <p>W przypadku zaobserwowania u siebie skutków ubocznych i/lub powikłań Klient powinien niezwłocznie poinformować Studio i skontaktować się z lekarzem celem uzyskania pomocy medycznej, do świadczenia której Studio nie jest uprawnione.</p>
+
+                    <h6 class="fw-bold mt-4">§9 PRZYGOTOWANIE DO USŁUGI</h6>
+                    <p>W trosce o bezpieczeństwo Klientów wykonanie każdej Usługi w Studiu poprzedzone jest m.in.: przeprowadzeniem kwalifikacji do Usługi wykluczających wystąpienie przeciwwskazań do wykonania Usługi wskazanych w § 7. Regulaminu przez wypełnienie ankiety zdrowotnej, odebraniem od Klienta zgody na Usługę i niezbędnych oświadczeń, jak również pouczeniem o zasadach pielęgnacji po usługowej.</p>
+                    <p>Klient zobowiązuje się do udzielenia personelowi Studia odpowiedzi zgodnych ze stanem faktycznym.</p>
+                    <p>Przed wykonaniem Tatuażu Klientowi przysługuje prawo zapoznania się z informacjami zamieszczonymi na opakowaniach Pigmentów używanych do wykonania Tatuażu.</p>
+                    <p>Studio nie ponosi odpowiedzialności za powikłania po usługowe lub działanie niepożądane stosowanych preparatów, jeśli nastąpią w konsekwencji zatajenia informacji o stanie zdrowia przez Klienta.</p>
+                    <p>Studio zastrzega sobie prawo odmowy wykonania Usługi, jeśli członek personelu Studia przeprowadzający wywiad stwierdzi istnienie przeciwwskazań do jego wykonania.</p>
+
+                    <h6 class="fw-bold mt-4">§10 ZGODA NA USŁUGĘ</h6>
+                    <p>Z zastrzeżeniem innych postanowień niniejszego Regulaminu, warunkiem wykonania przez Studio Usługi jest wyrażenie przez Klienta pisemnej zgody na Usługę na formularzu stosowanym przez Studio. Wyrażenie pisemnej zgody wymagane jest przed wykonaniem każdej Usługi.</p>
+                    <p>Zgodę na Usługę może wyrazić Klient pełnoletni, posiadający pełną lub ograniczoną zdolność do czynności prawnych.</p>
+                    <p>Studio nie wykonuje Usług Tatuażu osobom niepełnoletnim.</p>
+
+                    <h6 class="fw-bold mt-4">§11 ODMOWA WYKONANIA USŁUGI</h6>
+                    <p>Studio zastrzega sobie prawo do odmowy wykonania Usługi w następujących przypadkach:<br>
+                    1 ) gdy Klient nie wyraził zgody na wykonanie Usługi lub zgoda nie została udzielona w sposób prawidłowy, tj. zgodnie z obowiązującymi przepisami prawa;<br>
+                    2 ) jeżeli stan Klienta wskazuje na spożycie alkoholu, środków odurzających lub innych środków, które mogłyby w ocenie personelu Studia wpłynąć na wystąpienie ewentualnych powikłań w związku z wykonywaną Usługą lub uniemożliwić lub utrudnić wykonanie Usługi;<br>
+                    3 ) jeżeli w ocenie personelu Studia Klient nie kwalifikuje się do wykonania danej Usługi, w tym w szczególności z uwagi na wystąpienie przeciwwskazań do wykonania Usługi wskazanych w § 7 Regulaminu;<br>
+                    4 ) jeżeli Klient nie wyrazi zgody na czynności, których podjęcie jest konieczne do prawidłowego wykonania Usługi, w tym w szczególności odmówi udzielenia informacji lub nie udzieli niezbędnych informacji koniecznych do prawidłowego wykonania Usługi przez Studio, bądź nie wypełni wszystkich stosowanych i wymaganych formularzy w Studiu;<br>
+                    5 ) Klient nie wpłacił zadatku zgodnie z postanowieniami niniejszego Regulaminu, przez co nie doszło do Rezerwacji terminu;<br>
+                    6 ) Klient nie stosuje się do zasad zachowania bezpieczeństwa wskazanych w § 19 i § 20 Regulaminu.</p>
+
+                    <h6 class="fw-bold mt-4">§12 PŁATNOŚCI</h6>
+                    <p>Klient ma możliwość płatności za Usługi w Studiu gotówką, przelewem bankowymi Voucherem.</p>
+                    <p>Zadatek należy uiścić według zasad wskazanych w § 3 Regulaminu.</p>
+                    <p>Usługi są wyceniane zgodnie z zasadami wskazanymi w § 5 Regulaminu.</p>
+
+                    <h6 class="fw-bold mt-4">§13 VOUCHERY</h6>
+                    <p>Studio prowadzi sprzedaż Voucherów na Usługi o dowolnej wartości.</p>
+                    <p>Voucher jest dokumentem wystawionym przez Studio umożliwiającym realizację wybranych Usług w Studiu albo umożliwiającym płatność za Usługę świadczoną przez Studio zgodnie z obowiązującym Regulaminem i wartością posiadanego Vouchera, a znajdującą się w aktualnej ofercie Studia.</p>
+                    <p>Voucher jest wydawany w formie elektronicznego zaproszenia na okaziciela lub w formie fizycznej.</p>
+                    <p>Voucher zawiera: odpowiednią do wykorzystania kwotę, numer i termin ważności. Voucher może zawierać również opis sposobu jego realizacji.</p>
+                    <p>Wszelkie manipulacje/zmiany w treści Vouchera w tym skreślenia, przekreślenia, uzupełnienia, dopiski powodują, że Voucher traci ważność.</p>
+                    <p>Voucher można nabyć w sklepie w studiu w formie fizycznej lub w formie elektronicznej kontaktując się pod adresem emwitattoo@gmail.com</p>
+                    <p>W przypadku kupna Vouchera na odległość Klientowi jest dostarczany Voucher w postaci elektronicznej, na wskazany przez niego adres mailowy.</p>
+                    <p>W przypadku nabycia Vouchera na odległość Klientowi przysługuje 14-sto dniowe prawo odstąpienia od umowy zawartej na odległość opisane w § 14 Regulaminu, po upływie terminu do odstąpienia od umowy Voucher nie podlega zwrotowi ani wymianie na gotówkę.</p>
+                    <p>W przypadku skorzystania przez Klienta z prawa odstąpienia Studio dezaktywuje dostarczony Klientowi Voucher.</p>
+                    <p>Voucher ważny jest przez 6 miesięcy liczonych od dnia jego wystawienia – w tym okresie należy skorzystać z Usług na podstawie zakupionego Vouchera. Po upływie terminu ważności, Voucher traci ważność, a posiadacz Vouchera traci wynikające z niego uprawnienia. W przypadku niezrealizowania Vouchera przez jego posiadacza lub chęci skorzystania z niego po terminie ważności Vouchera, jego posiadaczowi nie przysługują żadne prawa z tytułu posiadania Vouchera, nie może on też rościć sobie prawa do rekompensaty lub zwrotu opłaty za Voucher.</p>
+                    <p>W sytuacji, gdy wartość Vouchera jest wyższa niż wartość realizowanej z jego wykorzystaniem Usługi, powstała nadwyżka nie podlega zwrotowi.</p>
+                    <p>Klient może dopłacić do Vouchera w sytuacji, gdy wartość Usług, z których chce skorzystać przekracza wartość wskazaną na Voucherze.</p>
+                    <p>Voucher może być wykorzystany podczas jednej wizyty / jednych zakupów. Po upływie terminu ważności Vouchera, niewykorzystana wartość Vouchera przepada.</p>
+                    <p>Umawianie Usługi odbywa się na zasadach wskazanych w § 2 i § 3 Regulaminu, przy czym Klient powinien poinformować, że korzysta z Vouchera i wskazać termin ważności wykorzystywanego Vouchera.</p>
+                    <p>Udzielane rabaty, zniżki, promocje i Voucher nie łączą się.</p>
+                    <p>Warunkiem skorzystania z Vouchera jest przekazanie go w oryginale przed realizacją planowanej Usługi w recepcji Studia.</p>
+                    <p>W przypadku utraty lub zniszczenia Vouchera, Studio nie ponosi odpowiedzialności ani nie rekompensuje straty spowodowanej zaistniałą sytuacją.</p>
+                    <p>Studio nie ponosi odpowiedzialności za niedopuszczenie posiadacza Vouchera do wykonania wybranej Usługi, w przypadku stwierdzenia przez personel Studia przeciwwskazań do wykonania takiej Usługi.</p>
+                    <p>Usługa umawiana w ramach wykorzystania Vouchera, wymaga wpłaty zadatku na zasadach określonych w niniejszym Regulaminie, Usługa na której Klient nie pojawi się bez wcześniejszego odwołania Rezerwacji zgodnie z § 4 ust. 1 Regulaminu przepada, a Studio zatrzymuje zadatek na zasadach wskazanych w niniejszym Regulaminie.</p>
+                    <p>Niniejszy Regulamin stanowi integralną część zakupu Vouchera.</p>
+
+                    <h6 class="fw-bold mt-4">§14 PRAWO ODSTĄPIENIA OD UMOWY</h6>
+                    <p>Klient ma prawo odstąpić od umowy zawartej poza Studiem w terminie 14 dni bez podania jakiejkolwiek przyczyny, aby skorzystać z prawa odstąpienia od umowy, Klient musi poinformować Studio o swojej decyzji o odstąpieniu Umowy w drodze jednoznacznego oświadczenia złożonego drogą elektroniczną na adres e-mail: emwitattoo@gmail.com lub pisemnie na adres Studia. Wzór formularza odstąpienia od umowy stanowi załącznik do Regulaminu. Skorzystanie z formularza jest jednak tylko zaleceniem, a jego niewykorzystanie w procesie odstąpienia od umowy nie stanowi o nieważności odstąpienia.</p>
+                    <p>Termin do odstąpienia od Umowy wygasa po upływie 14 dni od dnia zawarcia umowy na Usługę, aby zachować termin do odstąpienia od umowy, wystarczy, aby Klient wysłał informację dotyczącą wykonania przysługującego mu prawa odstąpienia od umowy przed upływem terminu do odstąpienia od umowy.</p>
+
+                    <h6 class="fw-bold mt-4">§15 SKUTKI ODSTĄPIENIA OD UMOWY</h6>
+                    <p>W przypadku odstąpienia od umowy Studio zwraca Klientowi niezwłocznie wszystkie otrzymane płatności, nie później niż 14 dni od dnia, w którym Klient poinformował Studio o wykonaniu prawa odstąpienia od Umowy. Studio dokona zwrotu płatności przy użyciu takich samych sposobów płatności, jakie zostały użyte przez Klienta w pierwotnej transakcji.</p>
+
+                    <h6 class="fw-bold mt-4">§16 WYŁĄCZENIE PRAWA ODSTĄPIENIA</h6>
+                    <p>Klient traci prawo do odstąpienia od umowy zawartej poza Studiem jeśli Usługa została wykonana przez Studio, w tym jeśli została wykonana przed upływem terminu do odstąpienia od Umowy, Klient traci prawo do odstąpienia od umowy zawartej ze Studiem.</p>
+                    <p>Klientowi nie przysługuje prawo do odstąpienia od umowy na wykonanie tatuażu zawartej poza Studiem, którego Wzór jest tworzony przez Tatuatora na zamówienie Klienta według jego indywidualnych preferencji (na podstawie opisu lub referencji Klienta dostarczonych Tatuatorowi).</p>
+
+                    <h6 class="fw-bold mt-4">§17 REKLAMACJE</h6>
+                    <p>Klientowi przysługuje prawo do reklamacji Usługi, która powinna zostać przez Klienta zgłoszona niezwłocznie po odkryciu wady fizycznej bądź prawnej przedmiotu wykonanej Usługi.</p>
+                    <p>Klient ma prawo żądać zwrotu całości lub części kosztów Usługi albo wykonania nieodpłatnych poprawek.</p>
+                    <p>Reklamację należy złożyć na piśmie, osobiście w Studiu lub listem poleconym.</p>
+                    <p>Reklamacja powinna zawierać dane umożliwiające identyfikację Klienta, przedmiot reklamacji oraz żądania związane z reklamacją. W przypadku otrzymania niekompletnej reklamacji, Studio wezwie Klienta do jej uzupełnienia pod rygorem pozostawienia reklamacji bez rozpoznania.</p>
+                    <p>Studio ma 14 dni kalendarzowych na rozpatrzenie reklamacji Klienta.</p>
+                    <p>W przypadku pozytywnego rozpatrzenia reklamacji, Studio spełni żądania Klienta.</p>
+                    <p>Studio ma prawo do nieuznania reklamacji Klienta. W przypadku odpowiedzi odmownej, Klient ma prawo odwołać się od decyzji Studia w ciągu 14 dni kalendarzowych. Na rozpatrzenie odwołania Studio ma 14 dni kalendarzowych.</p>
+                    <p>Studio nie ponosi odpowiedzialności za powikłania, które wystąpią po poprawnie przeprowadzonej Usłudze, poprzedzonej kwalifikacją do Usługi, pouczeniami o przeciwwskazaniach i możliwych powikłaniach, jak również odebraniem od Klienta zgody na Usługę, jeśli podczas kwalifikacji nie stwierdzono przeciwwskazań do wykonania Usługi.</p>
+                    <p>Studio nie ponosi odpowiedzialności za powikłania powstałe w wyniku nieprzestrzegania przez Klienta zaleceń po usługowych.</p>
+                    <p>Wzór formularza reklamacji usługi stanowi załącznik do Regulaminu. Skorzystanie z formularza jest jednak tylko zaleceniem, a jego niewykorzystanie w procesie reklamacji nie stanowi o nieważności reklamacji.</p>
+
+                    <h6 class="fw-bold mt-4">§18 POZASĄDOWE SPOSOBY ROZPATRYWANIA REKLAMACJI I DOCHODZENIA ROSZCZEŃ</h6>
+                    <p>Studio wyraża zgodę na poddanie ewentualnych sporów wynikłych w związku z wykonana Usługą na drodze postępowania mediacyjnego. Szczegóły zostaną określone przez strony konfliktu.</p>
+                    <p>Wszelkie spory związane z Usługami świadczonymi przez Studio będą rozstrzygane przez sądy powszechne, a prawem właściwym jest prawo polskie.</p>
+                    <p>Klient ma możliwość skorzystania z pozasądowego sposobu rozpatrywania reklamacji i dochodzenia roszczeń. Zasady dostępu do tych procedur dostępne są w siedzibach oraz na stronach internetowych powiatowych (miejskich) rzeczników konsumentów, organizacji społecznych, do których zadań statutowych należy ochrona konsumentów, wojewódzkich inspektoratów inspekcji handlowej oraz pod następującymi adresami internetowymi Urzędu Ochrony Konkurencji i Konsumentów:<br>
+                    1 ) http://www.uokik.gov.pl/spory_konsumenckie.php;<br>
+                    2 ) http://www.uokik.gov.pl/sprawy_indywidualne.php;<br>
+                    3 ) http://www.uokik.gov.pl/wazne_adresy.php.</p>
+                    <p>Istnieje również możliwość skorzystania z platformy internetowego systemu rozstrzygania sporów pomiędzy konsumentami, a przedsiębiorcami na szczeblu unijnym (platforma ODR), która dostępna jest pod adresem: http://ec.europa.eu/consumers/odr.</p>
+
+                    <h6 class="fw-bold mt-4">§19 STANDARDY HIGIENICZNE STUDIA</h6>
+                    <p>Studio ściśle przestrzega wymogów sanitarnych zalecanych przez Głównego Inspektora Sanitarnego oraz wytycznych Ministerstwa Zdrowia w zakresie utrzymania porządku i higieny w Studiu, przygotowania stanowiska na którym będzie wykonywana Usługa, obowiązku dezynfekcji powierzchni w Studiu, jak również stosuje procedury właściwe do postępowania z odpadami medycznymi (odpadami, które powstają w trakcie wykonywania Usług podczas których dochodzi do przerwania ciągłości tkanki).</p>
+                    <p>Stanowiska przeznaczone do wykonania Usługi i urządzenia wykorzystywane podczas Usługi są każdorazowo dezynfekowane i zabezpieczane jednorazową folią, która jest usuwana po każdej Usłudze.</p>
+                    <p>Narzędzia używane do wykonania Usługi są jednorazowe lub poddawane sterylizacji.</p>
+
+                    <h6 class="fw-bold mt-4">§20 PRZEPISY PORZĄDKOWE</h6>
+                    <p>Każdy Klient korzystający z Usług Studia zobowiązany jest do przestrzegania zapisów wynikających z niniejszego Regulaminu.</p>
+                    <p>Każdorazowo aktualny i ujednolicony tekst Regulaminu, obejmujący wszelkie dotychczasowe zmiany jego treści, dostępny jest przy zapisie na Usługę i w Recepcji Studia.</p>
+                    <p>Korzystając z Usług Studia Klient ma obowiązek w szczególności:<br>
+                    1 ) posiadania ważnych dokumentów pozwalających na zidentyfikowanie jego tożsamości;<br>
+                    2 ) przestrzegania zakazu wnoszenia i spożywania na terenie Studia napojów alkoholowych, środków odurzających, palenia wyrobów tytoniowych, papierosów elektronicznych oraz innych substancji, które mogłyby zagrażać życiu lub zdrowiu Klienta, lub też powodować lub zwiększać ryzyko powikłań zarówno podczas, jak i po Usłudze;<br>
+                    3 ) na czas trwania Usługi pozostawić swoje ubrania w miejscu do tego wyznaczonym w Studiu, a przedmioty wartościowe i pieniądze zabrać ze sobą pod rygorem braku odpowiedzialności Studia za rzeczy, przedmioty wartościowe i pieniądze pozostawione bez nadzoru. Zaleca się pozostawienie wartościowych rzeczy w domu;<br>
+                    4 ) na czas wykonywania Usługi Klient zobowiązany jest wyłączyć wszystkie urządzenia elektroniczne, w tym w szczególności telefon komórkowy;<br>
+                    5 ) poszanowania mienia będącego własnością Studia wykonującego Usługi, szkody powstałe z winy Klienta zostaną usunięte na jego koszt;<br>
+                    6 ) zachowania czystości w miejscach, z których korzysta;<br>
+                    7 ) przestrzegania zaleceń personelu Studia;<br>
+                    8 ) przestrzegania zasad bezpieczeństwa oraz przepisów przeciwpożarowych.</p>
+                    <p>Klienci Studia nie mogą:<br>
+                    1 ) samowolnie korzystać ze sprzętów i narzędzi służących do realizacji Usługi;<br>
+                    2 ) samodzielnie uruchamiać i wyłączać sprzętu;<br>
+                    3 ) wchodzić do pomieszczeń, w których realizowane są Usługi bez zgody personelu Studia.</p>
+
+                    <h6 class="fw-bold mt-4">§21 OCHRONA DANYCH OSOBOWYCH</h6>
+                    <p>Administratorem danych osobowych Klientów jest Emilia Duszczyk prowadząca działalność gospodarczą pod firmą EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, adres do doręczeń: ul. Wspólna Droga 12/26, 04-352 Warszawa, e-mail: emwitattoo@gmail.com</p>
+                    <p>Studio przetwarza dane osobowe Klientów m.in. w celu realizacji umów i wykonania Usług na zasadach wskazanych w Polityce prywatności.</p>
+
+                    <h6 class="fw-bold mt-4">§22 POSTANOWIENIA KOŃCOWE</h6>
+                    <p>Każdy Klient korzystający z Usług Studia zobowiązany jest do przestrzegania zapisów wynikających z niniejszego Regulaminu.</p>
+                    <p>W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają odpowiednie przepisy kodeksu cywilnego, ustawy o prawach konsumenta, ustawy o prawie autorskim i prawach pokrewnych oraz inne przepisy powszechnie obowiązujące. Wszelkie spory wynikłe z tytułu wykonywania zobowiązań związanych z daną Usługą będą rozstrzygane przez sąd właściwy, zgodnie z właściwością wskazaną w kodeksie postępowania cywilnego.</p>
+                    <p>Studio zastrzega sobie prawo do dokonania modyfikacji postanowień niniejszego Regulaminu z zastrzeżeniem, iż wprowadzone zmiany nie będą naruszały praw nabytych przez Klientów przed wejściem w życie zmian niniejszego Regulaminu.</p>
+                    <p>Każdorazowo aktualny i ujednolicony tekst Regulaminu, obejmujący jego wszelkie dotychczasowe zmiany jego treści, dostępny jest przy zapisie na Usługę i na stronie Studia.</p>
+                    <p>Niniejszy Regulamin wchodzi w życie z dniem 29 kwietnia 2026 r.</p>
+                    <p><strong>Przetwarzanie danych osobowych</strong><br>
+                    Klient wpłacając zadatek lub poddając się zabiegowi bez zadatku wyraża zgodę na przetwarzanie danych osobowych dla potrzeb niezbędnych do realizacji usługi wykonania tatuażu zgodnie z ustawą o ochronie danych osobowych (Dz. U. Ne 133, poz 883). Zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z 27 kwietnia 2016r. W sprawie ochrony osób fizycznych w z związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólnie rozporządzenie o ochronie danych) (Dz. Urz. UE L nr 119, str. 1).</p>
+
+                    <h6 class="fw-bold mt-4">Załączniki do Regulaminu:</h6>
+
+                    <p><strong>WZÓR FORMULARZA ODSTĄPIENIA OD UMOWY</strong><br>
+                    (formularz ten należy wypełnić i odesłać tylko w przypadku chęci odstąpienia od umowy zawartej ze Studiem)<br>
+                    Adresat: EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, adres do doręczeń: ul. Wspólna Droga 12/26, 04-352 Warszawa, e-mail: emwitattoo@gmail.com</p>
+
+                    <p>Ja _______ [imię, nazwisko] niniejszym informuję o moim odstąpieniu od umowy sprzedaży Vouchera/ o świadczenie usługi tatuażu / inne _______ [wybrać właściwe].<br>
+                    Data zawarcia umowy: _______.<br>
+                    Imię i nazwisko konsumenta: _______.<br>
+                    Adres konsumenta: _______.<br>
+                    Data odstąpienia: _______.<br>
+                    Podpis konsumenta.</p>
+
+                    <p><strong>REKLAMACJA USŁUGI</strong><br>
+                    (formularz ten należy wypełnić i odesłać tylko w przypadku chęci zareklamowania usługi wykonanej w Studiu)<br>
+                    Adresat: EMWI Emilia Duszczyk, NIP: 2910140897, REGON: 141770438, adres do doręczeń: ul. Wspólna Droga 12/26, 04-352 Warszawa, e-mail: emwitattoo@gmail.com</p>
+
+                    <p>Niniejszym zawiadamiam, iż wykonana w dniu_______ przez Emilię Duszczyk, który wykonał w Studiu EMWI TATTOO Usługę polegającą na wykonaniu tatuażu została wykonana wadliwie.<br>
+                    Wada polega na _______ [proszę dokładnie opisać na czym polega wykryta wada]. Wada została stwierdzona w dniu _______.<br>
+                    Z uwagi na powyższe, na podstawie ustawy z dnia 23 kwietnia 1964 r. kodeks cywilny żądam:<br>
+                    1 ) nieodpłatnej naprawy usługi;<br>
+                    2 ) obniżenia ceny usługi o kwotę _______ PLN;<br>
+                    3 ) zwrot ceny zapłaconej za usługę;<br>
+                    4 ) inne roszczenie [proszę opisać swoje roszczenie]*<br>
+                    Proszę o zwrot podanej kwoty na konto / przekazem pocztowym na mój adres _______ [uzupełnić].<br>
+                    niepotrzebne skreślić<br>
+                    Data zawarcia umowy: _______.<br>
+                    Imię i nazwisko konsumenta: _______.<br>
+                    Adres konsumenta: _______.<br>
+                    Podpis konsumenta.</p>`
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function updateDOM() {
+            document.documentElement.lang = currentLang;
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) el.innerHTML = i18n[currentLang][key];
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (i18n[currentLang][key]) el.placeholder = i18n[currentLang][key];
+            });
+
+            document.getElementById('langBtn').innerText = currentLang === 'en' ? 'PL' : 'EN';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'pl' : 'en';
+            localStorage.setItem('lang', currentLang);
+            updateDOM();
+        }
+
+        updateDOM();
+    </script>
+</body>
+</html>
