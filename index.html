@@ -256,47 +256,25 @@
         </div>
     </section>
 
+<!-- Contact Form (Google Forms Embed) -->
     <section id="contact" class="py-5 bg-secondary-theme">
-        <div class="container" style="max-width: 600px;">
+        <div class="container" style="max-width: 800px;">
             <h2 class="display-5 fw-bold mb-4 text-center" data-i18n="bookTitle">BOOKING</h2>
             <p class="mb-5 text-center" style="color: var(--text-dark-bg);" data-i18n="bookSub">Please provide details about placement and size.</p>
             
-            <form action="https://formsubmit.co/emwitattoo@gmail.com" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-
-                <div class="mb-4">
-                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formName">Your Name</label>
-                    <input type="text" name="name" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required>
-                </div>
-                
-                <div class="mb-4">
-                    <label class="form-label small" style="color: var(--text-dark-bg);">Email</label>
-                    <input type="email" name="email" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required>
-                </div>
-
-                <div class="row">
-                    <div class="col-6 mb-4">
-                        <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formPlacement">Placement</label>
-                        <input type="text" name="placement" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" data-i18n-ph="phPlacement" placeholder="e.g. Left Forearm">
-                    </div>
-                    <div class="col-6 mb-4">
-                        <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formSize">Approx Size (cm)</label>
-                        <input type="text" name="size" class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" data-i18n-ph="phSize" placeholder="e.g. 15x10cm">
-                    </div>
-                </div>
-
-                <div class="mb-5">
-                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formDesc">Idea Description</label>
-                    <textarea name="message" class="form-control" rows="4" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5);" required></textarea>
-                </div>
-
-                <div class="mb-5">
-                    <label class="form-label small" style="color: var(--text-dark-bg);" data-i18n="formFile">Reference Photos (Max 5MB)</label>
-                    <input type="file" name="attachment" accept="image/png, image/jpe" multiple class="form-control" style="color: var(--text-dark-bg); border-color: rgba(248, 244, 238, 0.5); padding: 0.5rem 0;">
-                </div>
-
-                <button type="submit" class="btn btn-cta w-100 py-3" data-i18n="formSubmit">Send Request</button>
-            </form>
+            <!-- Iframe Container -->
+            <div class="w-100 d-flex justify-content-center">
+                <!-- Replace the src attribute with your actual Google Form embed URL -->
+                <iframe src="https://docs.google.com/forms/d/1BiN9gyMxEUE-JpzzAMN8VTz-e2OGRy-41q9WLa0S__U/viewform?embedded=true" 
+                        width="100%" 
+                        height="900" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        style="border-radius: 8px; background-color: #fff;">
+                    Wczytywanie…
+                </iframe>
+            </div>
         </div>
     </section>
 
